@@ -1,0 +1,86 @@
+/* SIGNUP.PHP */
+body{
+    background-color: #244173;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.signup-form{
+    width: 360px;
+    height: auto;
+    margin: auto;
+    margin-top: 20px;
+    background-color: #252424;
+    border-radius: 10px;
+}
+
+img{
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    width: 50%;
+    width:100px;
+}
+
+h2{
+    font-size: 30PX;
+    color: white;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 30px;
+}
+
+form{
+    width: 280px;
+    margin-left: 30px;
+}
+
+form input{
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+button{
+    width: 300px;
+    height: 35px;
+    margin-top:20px;
+    border: none;
+    background-color: #34c39f;
+    color: white;
+    margin-bottom: 30px;
+}
+
+p{
+    color: white;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+p a{
+    color: #b3b3b3;
+    text-decoration: none;
+}
+
+p a:hover,
+p a:active,
+p a:focus{
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+h1{
+    color: red;
+    text-align: center;
+    padding-bottom: 1px;
+    font-size: 12px;
+}
+
+h3{
+    color: lightgreen;
+    text-align: center;
+    padding-bottom: 1px;
+    font-size: 12px;
+}

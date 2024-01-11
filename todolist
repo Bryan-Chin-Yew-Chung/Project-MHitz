@@ -1,0 +1,3 @@
+Keep form data after signup failure
+
+Check password also when admin login // because hashed fk it up
