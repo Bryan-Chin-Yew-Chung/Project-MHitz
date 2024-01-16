@@ -81,7 +81,7 @@ body {
 
 .main-container {
     margin-left: 202px;
-    margin-bottom: 100px;
+    margin-bottom: 15px;
 }
 
 .topbar{
@@ -132,7 +132,7 @@ body {
 
 .topbar .navbar h4{
     font-weight: bold;
-    font-size: 26;
+    font-size: 15px;
     color: #b3b3b3;
 
 }

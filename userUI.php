@@ -86,7 +86,15 @@
                         echo        "<span> Admin Page </span>";
                         echo    "</a>";
                         echo "</li>";
-                    }               
+                    }  
+                    else{
+                        echo "<li>";
+                        echo    "<a href='userRequest.php'>";
+                        echo        "<span class='fa-solid fa-bell'></span>";
+                        echo        "<span> Song Requests </span>";
+                        echo    "</a>";
+                        echo "</li>";
+                    }             
                 ?>
             </ul>
 

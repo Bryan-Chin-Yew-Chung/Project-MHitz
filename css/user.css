@@ -1,0 +1,92 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.userSongRequest{
+    margin-left: 245px;
+}
+
+.userSongRequest h1{
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 30px;
+}
+
+.userSongRequest h2{
+    color: white;
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+
+.userSongRequest R{
+    color: red;
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+
+.userSongRequest Y{
+    color: yellow;
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+
+.userSongRequest B{
+    color: blue;
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+
+
+.request-form{
+    width: 280px;
+    margin-left: 30px;
+}
+
+
+.request-form form{
+    width: 280px;
+    margin-left: 30px;
+}
+
+.request-form form input{
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.request-form button{
+    width: 300px;
+    height: 35px;
+    margin-top:20px;
+    border-radius: 3px;
+    background-color: #9c1125;
+    border: none;
+    color: white;
+    margin-bottom: 30px;
+}
+
+/* Error Checkers
+h1{
+    color: red;
+    text-align: center;
+    padding-bottom: 1px;
+    font-size: 12px;
+}
+
+h3{
+    color: lightgreen;
+    text-align: center;
+    padding-bottom: 1px;
+    font-size: 12px;
+}
+*/
