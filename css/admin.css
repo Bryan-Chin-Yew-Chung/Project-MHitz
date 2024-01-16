@@ -1,0 +1,366 @@
+/* NAVIGATION.PHP */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 155px;
+    background-color: black;
+    padding: 24px;
+    border-right: 1px solid;
+    border-color: white;
+}
+
+.sidebar img {
+    width: 170px;
+}
+
+.sidebar .navigation ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.sidebar .navigation ul li {
+    padding: 10px 0px;
+}
+
+.sidebar .navigation ul li a {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.sidebar .navigation ul li a:hover,
+.sidebar .navigation ul li a:active,
+.sidebar .navigation ul li a:focus {
+    color: #ffffff;
+}
+
+.sidebar .navigation ul li a:hover .fa,
+.sidebar .navigation ul li a:active .fa,
+.sidebar .navigation ul li a:focus .fa {
+    color: #b3b3b3;
+}
+
+.sidebar .policies {
+    position: absolute;
+    bottom: 100px;
+}
+
+.sidebar .policies ul {
+    list-style: none;
+}
+
+.sidebar .policies ul li {
+    padding-bottom: 5px;
+}
+
+.sidebar .policies ul li a {
+    color: #b3b3b3;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 10px;
+}
+
+.sidebar .policies ul li a:hover,
+.sidebar .policies ul li a:active,
+.sidebar .policies ul li a:focus {
+    text-decoration: underline;
+}
+
+.main-container {
+    margin-left: 202px;
+    margin-bottom: 15px;
+}
+
+.topbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: #181818;
+    padding: 14px 30px;
+}
+
+.topbar .navbar {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.topbar .navbar ul {
+    list-style: none;
+}
+
+.topbar .navbar a{
+    font-weight: bold;
+    font-size: 26px;
+    color: #b3b3b3;
+}
+
+.topbar .navbar ul li {
+    display: inline-block;
+    margin: 0px 8px;
+    margin-bottom: 10px;
+    width: 70px;
+}
+
+.topbar .navbar ul li a {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.topbar .navbar ul li a:hover,
+.topbar .navbar ul li a:active,
+.topbar .navbar ul li a:focus {
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.topbar .navbar ul li.divider {
+    color: #ffffff;
+    font-size: 26px;
+    margin: 0px 20px;
+    width: auto;
+}
+
+.topbar .navbar h4{
+    font-weight: bold;
+    font-size: 15px;
+    color: #b3b3b3;
+
+}
+
+.topbar h5{
+    font-weight: bold;
+    font-size: 25px;
+    color: #b3b3b3;
+    padding-top: 12px;
+}
+
+.topbar .navbar button {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 14px 30px;
+    border: 0px;
+    border-radius: 40px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.topbar .navbar button:hover,
+.topbar .navbar button:active,
+.topbar .navbar button:focus {
+    background-color: #f2f2f2;
+}
+
+.adminDashboard{
+    height: auto;
+    margin-left: 202px;
+    margin-bottom: 200px;
+}
+
+.adminDashboard h1{
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.adminDashboard .adminData{
+    margin-left: 20px;
+}
+
+.adminDashboard .adminData .list{
+    display: flex;
+    gap : 20px;
+}
+
+.adminDashboard .adminData .list .item{
+    display: flex;
+    min-width: 140px;
+    width: 450px;
+    height: 194px;
+    padding: 15px;
+    background-color: #181818;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.adminDashboard .adminData .list .item .itemgroup{
+    width: 150px;
+    height: 150px;
+}
+
+.adminDashboard .adminData .list .item .itemdesc{
+    width: 200px;
+    height: 200px;
+}
+
+.adminDashboard .adminData .list .item .itemdesc h4{
+    color: white;
+    font-size: 15px;
+    margin-bottom: 10px;
+    white-space: initial;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.adminDashboard .adminData .list .item:hover{
+    background: #252525;
+}
+
+.adminDashboard .adminData .list .item img{
+    width: 140px;
+    height: 140px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.adminDashboard .adminData .list .item h4{
+    color: white;
+    font-size: 15px;
+    margin-bottom: 10px;
+    white-space: initial;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.adminDashboard .adminData .list .item p{
+    color: #989898;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.adminDashboard .adminData .list .item p{
+    color: #989898;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+}
+
+
+.adminDashboard .widgetAM{
+    margin-left: 20px;
+}
+
+.adminDashboard .widgetAM .listAM{
+    display: flex;
+    gap : 20px;
+
+}
+
+.adminDashboard .widgetAM .listAM .itemAM{
+    display: flex;
+    min-width: 140px;
+    width: 200px;
+    height: 150px;
+    padding: 15px;
+    background-color: #b3b3b3;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.adminDashboard .widgetAM .listAM .itemAM h4{
+    padding-left: 20px;
+    padding-top: 30px;
+}
+
+.adminDashboard .widgetAM .listAM .itemAM:hover{
+    background: white;
+}
+
+.adminDashboard .widgetAM .listAM a{
+    text-decoration: none;
+    color: black;
+}
+
+.adminUserControl{
+    margin-left: 255px;
+}
+
+.adminUserControl h1{
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.adminUserControl .signup-form{
+    width: 360px;
+    height: auto;
+    margin-top: 20px;
+    background-color: #252424;
+    border-radius: 10px;
+}
+
+.adminUserControl form{
+    width: 280px;
+    margin-left: 30px;
+}
+
+.adminUserControl .signup-form h1{
+    padding-top: 10px;
+    color: red;
+    text-align: center;
+    padding-bottom: 1px;
+    font-size: 12px;
+}
+
+.adminUserControl .signup-form h3{
+    padding-top: 10px;
+    color: lightgreen;
+    text-align: center;
+    padding-bottom: 1px;
+    font-size: 12px;
+}
+
+.adminUserControl form input{
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.adminUserControl button{
+    width: 106%;
+    height: 35px;
+    margin-top:20px;
+    border-radius: 3px;
+    background-color: #34c39f;
+    border: none;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.adminUserControl label{
+    color:white;
+    padding-right: 18px;
+}
+
+.adminUserControl select{
+    height: 24px;
+    width: 65px;
+}
+
+
+

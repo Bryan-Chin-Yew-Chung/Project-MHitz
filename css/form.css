@@ -1,6 +1,6 @@
 /* SIGNUP.PHP */
 body{
-    background-color: #244173;
+    background-color: black;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -47,8 +47,9 @@ button{
     width: 300px;
     height: 35px;
     margin-top:20px;
-    border: none;
+    border-radius: 3px;
     background-color: #34c39f;
+    border: none;
     color: white;
     margin-bottom: 30px;
 }

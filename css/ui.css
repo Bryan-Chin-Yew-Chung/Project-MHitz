@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #285282;
+    background-color: black;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -17,10 +17,12 @@ body {
     width: 155px;
     background-color: black;
     padding: 24px;
+    border-right: 1px solid;
+    border-color: white;
 }
 
 .sidebar img {
-    width: 154px;
+    width: 170px;
 }
 
 .sidebar .navigation ul {
@@ -85,7 +87,7 @@ body {
 .topbar{
     display: flex;
     justify-content: space-between;
-    background-color: #101010;
+    background-color: #181818;
     padding: 14px 30px;
 }
 

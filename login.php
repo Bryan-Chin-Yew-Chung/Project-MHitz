@@ -14,7 +14,7 @@
         <a href="navigation.php"><img src="./assets/logo.jpg" alt="logo" /> </a>
         <h2> Login </h2>
         <form action="includes/login.inc.php" method="post">
-            <input type ="text" name="name" placeholder="UserName/Email....">
+            <input type ="text" name="name" placeholder="Username/Email....">
             <input type ="password" name="pwd" placeholder="Password....">
                 <?php
                     // Return error messages

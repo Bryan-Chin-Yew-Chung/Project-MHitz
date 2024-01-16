@@ -150,3 +150,49 @@
 
         }
     }
+
+    // ADMIN FUNCTIONS //////////////////////////////////////////
+    // Admin Create user
+    function adminCreateUser($con , $name , $email , $pwd){
+        $sql = "INSERT INTO users (usersName , usersEmail , usersPwd) VALUES (? , ? , ?)";
+
+        // Prevent code injection
+        $stmt = mysqli_stmt_init($con);
+        if(!mysqli_stmt_prepare($stmt , $sql)){
+            header("location: ../AM_accountcreator.php?error=statementfailed");
+            exit();
+        }
+
+        //Big Brain password hashing
+        $hashPwd = password_hash($pwd , PASSWORD_DEFAULT);
+
+        mysqli_stmt_bind_param($stmt, "sss" , $name , $email , $hashPwd);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+
+        header("location: ../AM_accountcreator.php?error=none");
+        exit();
+    }
+
+    function createAdmin($con , $name , $email , $pwd){
+        $sql = "INSERT INTO users (usersName , usersEmail , usersPwd , usersType) VALUES (? , ? , ? , ?)";
+
+        // Prevent code injection
+        $stmt = mysqli_stmt_init($con);
+        if(!mysqli_stmt_prepare($stmt , $sql)){
+            header("location: ../AM_accountcreator.php?error=statementfailed");
+            exit();
+        }
+
+        //Big Brain password hashing
+        $hashPwd = password_hash($pwd , PASSWORD_DEFAULT);
+
+        $type = "admin";
+
+        mysqli_stmt_bind_param($stmt, "ssss" , $name , $email , $hashPwd , $type);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+
+        header("location: ../AM_accountcreator.php?error=none");
+        exit();
+    }
