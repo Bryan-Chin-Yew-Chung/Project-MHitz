@@ -1,7 +1,5 @@
 Keep form data after signup failure
 
-Check password also when admin login // because hashed fk it up
+Make sure all file are error checked
 
-Add more options to usernames now currently a-z 0-9
-
-change all PHP echo into normal html (big revelation)
+Add length limit to user stuff

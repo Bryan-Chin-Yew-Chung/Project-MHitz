@@ -199,8 +199,30 @@
 
 
 
-    function getRequests(){
-        
+    function getRequests($con){
+        $query = "SELECT * FROM requests";
+        $result = mysqli_query($con, $query);
+        echo "<table>" ;
+        $first_row = true;
+            while ($row = mysqli_fetch_assoc($result)) {
+                if ($first_row) {
+                    $first_row = false;
+                    // Before displaying first row of data.
+                    // ---> Display row of column headers, from keys. <---
+                    echo '<tr>';
+                    foreach($row as $column_name => $value) {
+                        echo '<th>' . htmlspecialchars($column_name) . '</th>';
+                    }
+                    echo '</tr>';
+                }
+                echo '<tr>';
+                // Display row of data.
+                foreach($row as $column_name => $value) {
+                    echo '<td>' . htmlspecialchars($value) . '</td>';
+                }
+                echo '</tr>';
+            }
+        echo "</table>" ;
     }
 
 

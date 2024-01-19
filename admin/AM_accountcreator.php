@@ -57,9 +57,11 @@
 
                         ?>
                     <button type="submit" name = "submit">Create!</button>
-                </form>
-                
+                </form>      
 
+                <form class = "backACC">
+                    <input type="submit" value="Back To Account Control" formaction="AM_accountcontrol.php">
+                </form>
             </div>
 
 

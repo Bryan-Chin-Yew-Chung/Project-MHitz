@@ -44,7 +44,7 @@
                 </li>
 
                 <li>
-                    <a href="AM_accountManager.php">
+                    <a href="AM_accountcontrol.php">
                         <span class="fa fa-search"></span>
                         <span> Account Control </span>
                     </a>
