@@ -75,18 +75,20 @@ body {
     margin-bottom: 30px;
 }
 
-/* Error Checkers
-h1{
+
+.request-form h1{
     color: red;
     text-align: center;
+    padding-bottom: 1px;
+    padding-left: 80px;
+    font-size: 12px;
+}
+
+.request-form h3{
+    color: lightgreen;
+    text-align: center;
+    padding-left: 80px;
     padding-bottom: 1px;
     font-size: 12px;
 }
 
-h3{
-    color: lightgreen;
-    text-align: center;
-    padding-bottom: 1px;
-    font-size: 12px;
-}
-*/

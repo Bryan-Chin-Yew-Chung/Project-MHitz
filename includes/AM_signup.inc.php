@@ -15,31 +15,31 @@
 
         // Check if input if empty
         if (signupEmptyInput($name , $email , $pwd , $pwdrepeat) !== false) {
-            header("location: ../AM_accountcreator.php?error=emptyinput");
+            header("location: ../admin/AM_accountcreator.php?error=emptyinput");
             exit();
         }
 
         // Check if username is valid (A-Z | 0-9)
         if (usernameInvalid($name) !== false) {
-            header("location: ../AM_accountcreator.php?error=invalidusername");
+            header("location: ../admin/AM_accountcreator.php?error=invalidusername");
             exit();
         }
 
         // Check if email is valid 
         if (emailInvalid($email) !== false) {
-            header("location: ../AM_accountcreator.php?error=invalidemail");
+            header("location: ../admin/AM_accountcreator.php?error=invalidemail");
             exit();
         }
 
         // Check if passwords match
         if (matchPasswords($pwd , $pwdrepeat) !== false) {
-            header("location: ../AM_accountcreator.php?error=passwordmismatch");
+            header("location: ../admin/AM_accountcreator.php?error=passwordmismatch");
             exit();
         }
 
         // Check if username exist in database
         if (usernameEmailUsed($con , $name , $email) !== false) {
-            header("location: ../AM_accountcreator.php?error=username/emailtaken");
+            header("location: ../admin/AM_accountcreator.php?error=username/emailtaken");
             exit();
         }
 
@@ -56,8 +56,8 @@
 
     }
 
-    // Else banish to right page
+    // Else banish to back to admin
     else{
-        header("location: ../AM_accountcreator.php?error=none");
+        header("location: ../admin/AM_accountcreator.php?error=none");
         exit();
     }

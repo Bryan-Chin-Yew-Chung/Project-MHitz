@@ -42,6 +42,8 @@
             exit();
         }
 
+
+
         // Create user in database if all error handlers passed
         createUser($con, $name, $email, $pwd);
 

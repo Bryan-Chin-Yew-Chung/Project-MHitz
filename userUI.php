@@ -32,7 +32,7 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="index.php">
                         <span class="fa fa-home"></span>
                         <span> Home </span>
                     </a>
@@ -81,7 +81,7 @@
                     if ($_SESSION["usersType"] == "admin"){
   
                         echo "<li>";
-                        echo    "<a href='admin.php'>";
+                        echo    "<a href='admin/admin.php'>";
                         echo        "<span class='fa-solid fa-lock'></span>";
                         echo        "<span> Admin Page </span>";
                         echo    "</a>";

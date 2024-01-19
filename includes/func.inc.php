@@ -159,7 +159,7 @@
         // Prevent code injection
         $stmt = mysqli_stmt_init($con);
         if(!mysqli_stmt_prepare($stmt , $sql)){
-            header("location: ../AM_accountcreator.php?error=statementfailed");
+            header("location: ../admin/AM_accountcreator.php?error=statementfailed");
             exit();
         }
 
@@ -170,7 +170,7 @@
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
-        header("location: ../AM_accountcreator.php?error=none");
+        header("location: ../admin/AM_accountcreator.php?error=noneuser");
         exit();
     }
 
@@ -180,7 +180,7 @@
         // Prevent code injection
         $stmt = mysqli_stmt_init($con);
         if(!mysqli_stmt_prepare($stmt , $sql)){
-            header("location: ../AM_accountcreator.php?error=statementfailed");
+            header("location: ../admin/AM_accountcreator.php?error=statementfailed");
             exit();
         }
 
@@ -193,6 +193,35 @@
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
-        header("location: ../AM_accountcreator.php?error=none");
+        header("location: ../admin/AM_accountcreator.php?error=noneadmin");
         exit();
     }
+
+
+
+    function getRequests(){
+        
+    }
+
+
+    // SONG REQUESTS ////////////////////////////////////
+    function sendSongRequest($con , $usersname , $songname , $songartist , $songdate ){
+        $sql = "INSERT INTO requests (usersName , songname , songartist , songdate) VALUES (? , ? , ? , ?)";
+
+        // Prevent code injection
+        $stmt = mysqli_stmt_init($con);
+        if(!mysqli_stmt_prepare($stmt , $sql)){
+            header("location: ../userRequest.php?error=statementfailed");
+            exit();
+        }
+
+        mysqli_stmt_bind_param($stmt, "ssss" , $usersname ,$songname , $songartist , $songdate );
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+
+        header("location: ../userRequest.php?error=none");
+        exit();
+    }
+
+
+

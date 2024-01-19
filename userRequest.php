@@ -24,19 +24,31 @@
             <div class="request-form">
                 <br> 
                 <form action="includes/songrequest.inc.php" method="post">
+
                     <input type ="text" name="songname" placeholder="Song Name....">
                     <input type ="text" name="songartist" placeholder="Artist Name....">
-                    <input type ="text" name="songdate" placeholder="Date Released....">
-
+                    <input type ="number" min = "1940" max = "2024" name="songdate" placeholder="Year Released....">
                     <button type="submit" name = "submit">Create!</button>
-                </form>
+                    </form>
+            <?php
 
+            echo $_SESSION["usersName"];
+                // Return error messages
+                    if (isset($_GET["error"])){
+                        if($_GET["error"] == "emptyinput"){
+                            echo "<h1> Required input is missing! </h1>";
+                        }
+                        if($_GET["error"] == "none"){
+                            echo "<h3> Request Sent! </h3>";
+                        }
+                    }
+                ?>
             </div>
                 <br>
                 <br>
                 <h2> Small reminder that only music made by 
                 <!-- Cool Malaysian Colored Text -->
-                <R>M</R><Y>A</Y><B>L</B>A<R>Y</R><Y>S</Y><B>I</B>A<R>N</R> 
+                <R>M</R><Y>A</Y><B>L</B>A<R>Y</R><Y>S</Y><B>I</B>A<R>N</R>
                 artists will be accepted.</h2>
                 <h2> Admins will go through the requests and add songs if all criteria are met.</h2>
 
