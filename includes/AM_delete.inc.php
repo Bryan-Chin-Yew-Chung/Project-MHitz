@@ -13,3 +13,7 @@
             die(mysqli_error($con));
         }
     }
+
+    else{
+         header("location: ../admin/AM_accountcontrol.php");
+    }

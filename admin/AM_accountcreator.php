@@ -26,8 +26,8 @@
                     <input type ="password" name="pwdrepeat" placeholder="Repeat Password....">
                     <label for = "usertype"> Choose Usertype </label>
                     <select name = "usertype">
-                        <option value = "User"> User </option>
-                        <option value = "Admin"> Admin </option>  
+                        <option value = "user"> User </option>
+                        <option value = "admin"> Admin </option>  
                     </select>
                         <?php
                             // Return error messages
@@ -54,7 +54,6 @@
                                     echo "<h3> Admin Succesfully Created! </h3>";
                                 }
                             }
-
                         ?>
                     <button type="submit" name = "submit">Create!</button>
                 </form>      

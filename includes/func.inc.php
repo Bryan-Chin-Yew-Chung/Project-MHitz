@@ -78,6 +78,36 @@
 
     }
 
+    // Check if username exists to deny signup or allow login
+    function usernameEmailUsedUpdate($con , $id , $name , $email){
+        $sql = "SELECT * FROM users WHERE usersID != $id AND (usersName = ? OR usersEmail = ?) ";
+
+        // Prevent code injection
+        $stmt = mysqli_stmt_init($con);
+        if(!mysqli_stmt_prepare($stmt , $sql)){
+            header("location: ../signup.php?error=statementfailed");
+            exit();
+        }
+
+        mysqli_stmt_bind_param($stmt, "ss" , $name , $email);
+        mysqli_stmt_execute($stmt);
+
+        $result = mysqli_stmt_get_result($stmt);
+
+        // Getting data from database
+        if($row = mysqli_fetch_assoc($result)){
+            return $row;
+        }
+
+        else {
+            $result = false;
+            return $result;
+        }
+
+        mysqli_stmt_close($stmt);
+
+    }
+
     // Create user
     function createUser($con , $name , $email , $pwd){
         $sql = "INSERT INTO users (usersName , usersEmail , usersPwd) VALUES (? , ? , ?)";
@@ -225,6 +255,34 @@
         echo "</table>" ;
     }
 
+    function UpdatenoPassword($con , $id , $name , $email, $type){
+        $sql = "UPDATE `users` SET usersID = $id, usersName = '$name',
+        usersEmail = '$email', usersType = '$type'
+        WHERE usersID = $id";
+        $result = mysqli_query($con, $sql);
+        if($result){
+            header("location: ../admin/AM_accountcontrol.php?error=updatesuccess");
+        }
+
+    }
+
+    function UpdatePassword($con , $id , $name , $email, $pwd, $type){
+        //Big Brain password hashing
+        $hashPwd = password_hash($pwd , PASSWORD_DEFAULT);
+        $sql = "UPDATE `users` SET usersID = $id, usersName = '$name',
+        usersEmail = '$email', usersPwd = '$hashPwd' , usersType = '$type'
+        WHERE usersID = $id";
+
+        $result = mysqli_query($con, $sql);
+        if($result){
+            header("location: ../admin/AM_accountcontrol.php?error=updatesuccess");
+        }
+    }
+
+
+        
+
+
 
     // SONG REQUESTS ////////////////////////////////////
     function sendSongRequest($con , $usersname , $songname , $songartist , $songdate ){
@@ -244,6 +302,9 @@
         header("location: ../userRequest.php?error=none");
         exit();
     }
+
+
+
 
 
 

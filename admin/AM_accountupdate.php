@@ -45,15 +45,15 @@
                         if($type == "admin"){
                             echo'    <label for = "usertype"> Choose Usertype </label>';
                             echo'    <select name = "usertype">';
-                            echo'    <option value = "Admin"> Admin </option>';
-                            echo'    <option value = "User"> User </option>';
+                            echo'    <option value = "admin"> admin </option>';
+                            echo'    <option value = "user"> user </option>';
                             echo'    </select>';
                         }
                         else{
                             echo'    <label for = "usertype"> Choose Usertype </label>';
                             echo'    <select name = "usertype">';
-                            echo'    <option value = "User"> User </option>';
-                            echo'    <option value = "Admin"> Admin </option>';
+                            echo'    <option value = "user"> user </option>';
+                            echo'    <option value = "admin"> admin </option>';
                             echo'    </select>';                           
                         }
                     ?>

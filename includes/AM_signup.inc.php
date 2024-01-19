@@ -44,12 +44,12 @@
         }
 
 
-        if($usertype == "User"){
+        if($usertype == "user"){
             // Create user in database if all error handlers passed
             adminCreateUser($con, $name, $email, $pwd);
         }
 
-        else if($usertype == "Admin"){
+        else if($usertype == "admin"){
             createAdmin($con, $name, $email, $pwd);
         }
 

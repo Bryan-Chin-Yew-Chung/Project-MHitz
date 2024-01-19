@@ -1,13 +1,16 @@
 <?php 
-    include_once "dbh.inc.php";
-    include_once "func.inc.php";
+
+    require_once "dbh.inc.php";
+    require_once "func.inc.php";
+
+    if(isset($_POST["submit"])){
 
 
-        $id = $_POST['id'];
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $pwd = $_POST['pwd'];
-        $type = $_POST['usertype'];
+        $id = $_POST["id"];
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $pwd = $_POST["pwd"];
+        $type = $_POST["usertype"];
 
         // Check if input if empty
         if (signupEmptyInput($id , $name , $email , $type) !== false) {
@@ -27,29 +30,26 @@
             exit();
         }
 
+
         // Check if username exist in database
-        if (usernameEmailUsed($con , $name , $email) !== false) {
+        if (usernameEmailUsedUpdate($con , $id , $name , $email) !== false) {
             header("location: ../admin/AM_accountcontrol.php?error=username/emailtaken");
             exit();
         }
 
-        if ($pwd == ""){
-            $sql = "UPDATE `users` SET usersID = $id, usersName = '$name',
-            usersEmail = '$email', usersType = '$type'
-            WHERE usersID = $id";
+        if($pwd == ""){
+            UpdatenoPassword($con,$id,$name,$email,$type);
         }
         else{
-            $sql = "UPDATE `users` SET usersID = $id, usersName = '$name',
-            usersEmail = '$email', usersPwd = '$pwd' , usersType = '$type'
-            WHERE usersID = $id";
+            UpdatePassword($con,$id,$name,$email,$pwd,$type);
         }
 
-        $result = mysqli_query($con, $sql);
 
-    
+       
+    }
 
-        if($result){
-            header("../admin/AM_accountcontrol.php?error=updatesuccess");
-        }
+    else{
+        header("location: ../admin/AM_accountcontrol.php");
+        exit();
+    }
 
-?>
