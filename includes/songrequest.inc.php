@@ -9,9 +9,9 @@
 
         // Get variables
         $usersName = $_SESSION["usersName"];
-        $songname = $_POST["songname"];
-        $songartist = $_POST["songartist"];
-        $songdate = $_POST["songdate"];
+        $songname = $_POST["songName"];
+        $songartist = $_POST["songArtist"];
+        $songdate = $_POST["songDate"];
 
 
         // Check if input if empty

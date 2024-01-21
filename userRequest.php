@@ -25,10 +25,10 @@
                 <br> 
                 <form action="includes/songrequest.inc.php" method="post">
 
-                    <input type ="text" name="songname" placeholder="Song Name....">
-                    <input type ="text" name="songartist" placeholder="Artist Name....">
-                    <input type ="number" min = "1940" max = "2024" name="songdate" placeholder="Year Released....">
-                    <button type="submit" name = "submit">Create!</button>
+                    <input type ="text" name="songName" placeholder="Song Name...." minlength="1" maxlength="30">
+                    <input type ="text" name="songArtist" placeholder="Artist Name...." minlength="1" maxlength="30"> 
+                    <input type ="number" min = "1940" max = "2024" name="songDate" placeholder="Year Released....">
+                    <button type="submit" name = "submit">Request!</button>
                     </form>
             <?php
 
@@ -39,7 +39,7 @@
                             echo "<h1> Required input is missing! </h1>";
                         }
                         if($_GET["error"] == "none"){
-                            echo "<h3> Request Sent! </h3>";
+                            echo "<h3> Request Sent! Wait for an admin to approve/deny your request</h3>";
                         }
                     }
                 ?>

@@ -14,10 +14,10 @@
         <a href="index.php"><img src="./assets/logo.jpg" alt="logo" /> </a>
         <h2> Sign Up </h2>
         <form action="includes/signup.inc.php" method="post">
-            <input type ="text" name="name" placeholder="Username....">
-            <input type ="text" name="email" placeholder="Email....">
-            <input type ="password" name="pwd" placeholder="Password....">
-            <input type ="password" name="pwdrepeat" placeholder="Repeat Password....">
+            <input type ="text" name="name" placeholder="Username...." minlength="4" maxlength="20">
+            <input type ="text" name="email" placeholder="Email...." minlength="4" maxlength="50">
+            <input type ="password" name="pwd" placeholder="Password...." minlength="4" maxlength="20">
+            <input type ="password" name="pwdrepeat" placeholder="Repeat Password...." minlength="4" maxlength="20">
                 <?php
                     // Return error messages
                     if (isset($_GET["error"])){

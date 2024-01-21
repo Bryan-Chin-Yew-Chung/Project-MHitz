@@ -51,11 +51,8 @@
                         <span> Your Library </span>
                     </a>
                 </li>
-            </ul>
-        </div>
 
-        <div class="navigation">
-            <ul>
+
                 <li>
                     <a href="#">
                         <span class="fa fas fa-plus-square"></span>
@@ -69,13 +66,19 @@
                         <span> Liked Songs </span>
                     </a>
                 </li>
-
+               <li>
+                    <a href='userRequest.php'>
+                        <span class='fa-solid fa-bell'></span>
+                        <span> Song Requests </span>
+                    </a>
+                </li>  
             </ul>
         </div>
 
 
         <div class="navigation">     
             <ul>
+ 
                 <?php
                     error_reporting(0);
                     if ($_SESSION["usersType"] == "admin"){
@@ -86,16 +89,9 @@
                         echo        "<span> Admin Page </span>";
                         echo    "</a>";
                         echo "</li>";
-                    }  
-                    else{
-                        echo "<li>";
-                        echo    "<a href='userRequest.php'>";
-                        echo        "<span class='fa-solid fa-bell'></span>";
-                        echo        "<span> Song Requests </span>";
-                        echo    "</a>";
-                        echo "</li>";
-                    }             
-                ?>
+                    }                  ?>
+      
+
             </ul>
 
         </div>  

@@ -277,16 +277,35 @@
         if($result){
             header("location: ../admin/AM_accountcontrol.php?error=updatesuccess");
         }
+    } 
+
+    // Create song
+    function createSong($con , $songName , $songArtist , $songYear , $songImg){
+        $sql = "INSERT INTO songs (songName , songArtist , songYear , songImg) VALUES (? , ? , ? , ?)";
+
+        // Prevent code injection
+        $stmt = mysqli_stmt_init($con);
+        if(!mysqli_stmt_prepare($stmt , $sql)){
+            header("location: ../admin/AM_songcreator.php?error=statementfailed");
+            exit();
+        }
+
+
+        mysqli_stmt_bind_param($stmt, "ssss" , $songName , $songArtist , $songYear , $songImg);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+
+        header("location: ../admin/AM_songcreator.php?error=songadded");
+        exit();        
     }
-
-
-        
 
 
 
     // SONG REQUESTS ////////////////////////////////////
     function sendSongRequest($con , $usersname , $songname , $songartist , $songdate ){
-        $sql = "INSERT INTO requests (usersName , songname , songartist , songdate) VALUES (? , ? , ? , ?)";
+
+        $currentDate = date('Y-m-d');
+        $sql = "INSERT INTO requests (usersName , songName , songArtist , songDate , reqDate) VALUES (? , ? , ? , ? , ?)";
 
         // Prevent code injection
         $stmt = mysqli_stmt_init($con);
@@ -295,7 +314,7 @@
             exit();
         }
 
-        mysqli_stmt_bind_param($stmt, "ssss" , $usersname ,$songname , $songartist , $songdate );
+        mysqli_stmt_bind_param($stmt, "sssss" , $usersname ,$songname , $songartist , $songdate , $currentDate);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 

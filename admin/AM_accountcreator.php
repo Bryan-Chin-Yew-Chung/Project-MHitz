@@ -20,10 +20,10 @@
             <div class="signup-form">
                 <br> 
                 <form action="../includes/AM_signup.inc.php" method="post">
-                    <input type ="text" name="name" placeholder="Username....">
-                    <input type ="text" name="email" placeholder="Email....">
-                    <input type ="password" name="pwd" placeholder="Password....">
-                    <input type ="password" name="pwdrepeat" placeholder="Repeat Password....">
+                    <input type ="text" name="name" placeholder="Username...." minlength="4" maxlength="20">
+                    <input type ="text" name="email" placeholder="Email...." minlength="4" maxlength="50">
+                    <input type ="password" name="pwd" placeholder="Password...." minlength="4" maxlength="20">
+                    <input type ="password" name="pwdrepeat" placeholder="Repeat Password...." minlength="4" maxlength="20">
                     <label for = "usertype"> Choose Usertype </label>
                     <select name = "usertype">
                         <option value = "user"> User </option>

@@ -73,6 +73,7 @@ body {
     border: none;
     color: white;
     margin-bottom: 30px;
+    cursor: pointer;
 }
 
 
@@ -91,4 +92,3 @@ body {
     padding-bottom: 1px;
     font-size: 12px;
 }
-

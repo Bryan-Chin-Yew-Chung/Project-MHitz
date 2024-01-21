@@ -392,7 +392,7 @@ body {
 
 
 .adminDashboard input{
-    background-color: #34c39f;
+    background-color: darkcyan;
     border: none;
     border-radius: 3px;
     width: 120px;
@@ -410,6 +410,7 @@ body {
 table{
     width: 100%;
     text-align: left;
+    table-layout: auto;
 }
 
 th{
@@ -417,7 +418,7 @@ th{
     color: white;
     padding-top: 20px;
     padding-bottom: 20px;
-    font-size: 25px;
+    font-size: 20px;
     padding-left: 20px;
 }
 
@@ -426,6 +427,7 @@ tr{
 }
 
 td{
+    vertical-align: middle;
     color: white;
     padding-top: 10px;
     padding-bottom: 5px;
@@ -453,6 +455,14 @@ td .Delete{
     background-color: red;
 }
 
+td .Accept{
+    background-color: green;
+}
+
+td .Deny{
+    background-color: red;
+}
+
 .container h6{
     color: lightgreen;
     font-size: 20px;
@@ -467,6 +477,98 @@ td .Delete{
     padding-bottom: 10px;
 }
 
+.songcreator{
+    margin-left: 255px;
+}
 
+.songcreator h1{
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+}
 
+.songcreator .signup-form{
+    width: 360px;
+    height: auto;
+    margin-top: 20px;
+    background-color: #252424;
+    border-radius: 10px;
+}
 
+.songcreator form{
+    width: 280px;
+    margin-left: 30px;
+}
+
+.songcreator .signup-form h1{
+    padding-top: 10px;
+    color: red;
+    text-align: center;
+    padding-bottom: 1px;
+    font-size: 12px;
+}
+
+.songcreator .signup-form h3{
+    padding-top: 10px;
+    color: lightgreen;
+    text-align: center;
+    padding-bottom: 1px;
+    font-size: 12px;
+}
+
+.songcreator form input{
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.songcreator button{
+    width: 106%;
+    height: 35px;
+    margin-top:20px;
+    border-radius: 3px;
+    background-color: #34c39f;
+    border: none;
+    color: white;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.songcreator label{
+    color:white;
+    padding-right: 18px;
+}
+
+.songcreator select{
+    height: 24px;
+    width: 65px;
+}
+
+.songcreator .signup-form .backACC{
+  width: 296px;
+  height: 60px;
+
+  
+}
+
+.songcreator .signup-form .backACC input{
+    background-color: blue;
+    border-radius: 3px;
+    border: black 1px solid;
+    color: white;
+    height: 36px;
+    cursor: pointer;
+}
+
+.songcreator .signup-form label{
+    display: block;
+    padding-bottom: 10px;
+}
+
+table img{
+    width: 100px;
+    height: 100px;
+}

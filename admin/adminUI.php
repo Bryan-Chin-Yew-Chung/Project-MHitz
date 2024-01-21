@@ -51,26 +51,31 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="AM_requestcontrol.php">
+                        <span class="fa fas fa-exclamation"></span>
+                        <span class="fa fas fa-exclamation"></span>
+                        <span class="fa fas fa-exclamation"></span>
+                        <span> Request Control </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="AM_songcontrol.php">
                         <span class="fa fas fa-music"></span>
                         <span> Song Manager </span>
                     </a>
                 </li>
 
-                <li>
-                    <a href="AM_requests.php">
-                        <span class="fa fas fa-exclamation"></span>
-                        <span class="fa fas fa-exclamation"></span>
-                        <span class="fa fas fa-exclamation"></span>
-                        <span> User Requests </span>
-                    </a>
-                </li>
+
             </ul>
         </div>
 
-        <div class="navigation">     
+        <div class="navigation">   
+        <br><br><br><br><br>
+  
             <ul>
                 <?php
+
                     if ($_SESSION["usersType"] == "admin"){
   
                         echo "<li>";

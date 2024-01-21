@@ -6,6 +6,10 @@
         header("location: AM_accountcontrol.php");
     }
 
+    if($_GET["updateid"] == 1){
+        header("location: AM_accountcontrol.php?error=nicetry");
+    }
+
     $id = $_GET['updateid'];
 
     $sql = "SELECT * from `users` WHERE usersID = $id";
