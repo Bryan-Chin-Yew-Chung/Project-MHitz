@@ -32,7 +32,8 @@ include_once '../includes/func.inc.php';
 <body>
     <div class="adminDashboard">
         <div class="topRow">
-            <h1> Request Manager </h1>
+            <h1> Request Manager <br>
+            <br></h1>
         </div>
         <!--Data-->
         <div class="container">

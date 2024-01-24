@@ -297,9 +297,11 @@
 
         if ($reqID == 0){
             header("location: ../admin/AM_songcreator.php?error=songadded");
+            exit();
         }
         else {
-            header("location: AM_delete.inc.php?cdeletereq= " . $reqID . "");
+            header("location: ../includes/AM_delete.inc.php?cdeletereq=" . $reqID . "");
+            exit();
         }
         exit();        
     }

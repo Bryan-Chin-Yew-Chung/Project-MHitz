@@ -617,3 +617,36 @@ table img{
     width: 100px;
     height: 100px;
 }
+
+.container h2{
+    color: white;
+    font-size: 24px;
+    padding-left: 16px;
+}
+
+.adminDashboard .topRow .search{
+    display: flex;
+    width: 50%;
+    padding-left : 100px;
+    align-items: center;
+}
+
+.adminDashboard .topRow .search input{
+    padding-left: 10px;
+    width: 70%;
+    background-color: white;
+    color: black;
+    height: 40px;
+    cursor: text;
+}
+
+.adminDashboard .topRow .search button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding-left :10px;
+}
+
+.adminDashboard .topRow .search i {
+    color: white;
+}
