@@ -14,11 +14,11 @@ body {
     left: 0;
     top: 0;
     bottom: 0;
-    width: 155px;
     background-color: black;
     padding: 24px;
     border-right: 1px solid;
     border-color: white;
+    padding-right: 20px;
 }
 
 .sidebar img {
@@ -324,6 +324,29 @@ body {
     font-size: 12px;
 }
 
+.signup-form h2{
+    padding-top: 10px;
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
+    font-size: 24px;
+}
+
+.signup-form h4{
+    padding-top: 10px;
+    color: white;
+    text-align: left;
+    padding-bottom: 10px;
+    padding-left: 24px;
+    font-size: 24px;
+}
+
+
+.inner-form{
+    background-color: #434343;
+    border-radius: 10px;
+}
+
 .adminUserControl .signup-form h3{
     padding-top: 10px;
     color: lightgreen;
@@ -408,6 +431,7 @@ body {
 
 
 table{
+
     width: 100%;
     text-align: left;
     table-layout: auto;
@@ -427,17 +451,23 @@ tr{
 }
 
 td{
+    white-space: nowrap;
+    overflow: hidden;
+    height: 40px;
+    width: 180px;
+    text-overflow: ellipsis; 
     vertical-align: middle;
     color: white;
-    padding-top: 10px;
-    padding-bottom: 5px;
     font-size: 15px;
     padding-left: 20px;
+    border-bottom: 1px solid white;
 }
+
+
 
 td a {
     text-decoration: none;
-    color: white;
+
 }
 
 td button{
@@ -445,6 +475,12 @@ td button{
     border-radius: 1.5px;
     width: 66px;
     height: 36px;
+    color: white;
+    cursor: pointer;
+}
+
+td .Empty{
+    opacity: 0.0;
 }
 
 td .Edit{
@@ -458,6 +494,8 @@ td .Delete{
 td .Accept{
     background-color: green;
 }
+
+
 
 td .Deny{
     background-color: red;
@@ -481,6 +519,13 @@ td .Deny{
     margin-left: 255px;
 }
 
+.flexbox{
+    display: flex;
+}
+
+.reqHandler{
+    margin-left: 150px;
+}
 .songcreator h1{
     color: white;
     font-weight: bold;

@@ -15,7 +15,7 @@
         }
     }
 
-    if(isset($_GET['deletereq'])){
+    else if(isset($_GET['deletereq'])){
         $id = $_GET['deletereq'];
 
         $sql = "DELETE from `requests` WHERE songID = $id";
@@ -28,6 +28,49 @@
             die(mysqli_error($con));
         }
     }
+
+    else if(isset($_GET['cdeletereq'])){
+        $id = $_GET['cdeletereq'];
+
+        echo $id;
+        $sql = "DELETE from `requests` WHERE songID = $id";
+        $result=mysqli_query($con,$sql);
+
+        if($result){
+
+            header("location: ../admin/AM_requestcontrol.php?error=requestadded");
+        }
+        else{
+            die(mysqli_error($con));
+        }
+    }
+
+        //$sql = "SELECT usersType FROM users WHERE usersName = '$name';";
+        //$result = mysqli_query($con , $sql);
+        //$row = mysqli_fetch_assoc($result);
+
+    else if(isset($_GET['deletesong'])){
+        $id = $_GET['deletesong'];
+        $sqlget = "SELECT songImg FROM `songs` WHERE songID = '$id'";
+        $query = mysqli_query($con , $sqlget);
+
+        while ($row = $query->fetch_assoc()) {
+            $imagePath = "../uploads/" . $row['songImg'];
+        }
+        echo $imagePath;
+        unlink($imagePath);
+
+        $sql = "DELETE from `songs` WHERE songID = $id";
+        $result=mysqli_query($con,$sql);
+
+        if($result){
+            header("location: ../admin/AM_songcontrol.php?error=songdeleted");
+        }
+        else{
+            die(mysqli_error($con));
+        }
+    }
+
 
 
     else{

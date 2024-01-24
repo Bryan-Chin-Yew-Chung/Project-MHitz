@@ -280,7 +280,7 @@
     } 
 
     // Create song
-    function createSong($con , $songName , $songArtist , $songYear , $songImg){
+    function createSong($con , $songName , $songArtist , $songYear , $songImg , $reqID){
         $sql = "INSERT INTO songs (songName , songArtist , songYear , songImg) VALUES (? , ? , ? , ?)";
 
         // Prevent code injection
@@ -295,7 +295,12 @@
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
-        header("location: ../admin/AM_songcreator.php?error=songadded");
+        if ($reqID == 0){
+            header("location: ../admin/AM_songcreator.php?error=songadded");
+        }
+        else {
+            header("location: AM_delete.inc.php?cdeletereq= " . $reqID . "");
+        }
         exit();        
     }
 

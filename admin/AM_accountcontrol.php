@@ -11,8 +11,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/confirm.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet" />
     <title>Account Control</title>
+
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script language="JavaScript" type="text/javascript">
+    $(document).ready(function(){
+        $("a.delete").click(function(e){
+            if(!confirm('Are you sure you want to delete user?')){
+                e.preventDefault();
+                return false;
+            }
+            return true;
+        });
+    });
+    </script>
 </head>
 <body>
     <div class = "adminDashboard">
@@ -79,10 +94,12 @@
                     <td> ADMIN+ </td>
 
                     <td>  
+                        <button class="Empty"> </button>
+                        <button class="Empty"> </button>
                     </td>
                     </tr>';   
 
-
+                    //  ../includes/AM_delete.inc.php?deleteid='.$id.'"
                     while($row = mysqli_fetch_assoc($result)){
                         $id = $row['usersID'];
                         $name = $row['usersName'];
@@ -95,21 +112,27 @@
                             <td>' .$role. '</td>
 
                         <td>    
-                            <button class="Edit"> <a href="AM_accountupdate.php?updateid='.$id.'"> Update </a> </button>
-                            <button class="Delete"> <a href="../includes/AM_delete.inc.php?deleteid='.$id.'"> Delete </a> </button>
+                             <a href="AM_accountupdate.php?updateid='.$id.'"> <button class="Edit"> Update </button>  </a> 
+                             <a class = "delete" href="../includes/AM_delete.inc.php?deleteid='.$id.'"> <button class="Delete"> Delete </button> </a> 
                         </td>
                         </tr>';
+
+
+
+  
+ 
                     }
                 }
 
-            ?>
-
+                        ?>
 
             </table>
 
         </div>       
         </div>
+
+
+
 </body>
 </html>
-
 

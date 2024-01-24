@@ -1,5 +1,7 @@
 <?php
-    include_once 'adminUI.php'
+    include_once 'adminUI.php';
+    include_once '../includes/dbh.inc.php';
+    include_once '../includes/func.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -15,11 +17,12 @@
 <body>
     <div class = "adminDashboard">
         <h1> Dashboard </h1>
-
+        
         <!--Data-->
         <div class="adminData">
             <div class="list">
                 <div class="item">
+
                     <div class="itemgroup">
                         <img src="../assets/song1.jpeg" /> 
                         <h4> Steady Bom Bibi </h4>

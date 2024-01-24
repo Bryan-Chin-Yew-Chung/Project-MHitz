@@ -1,6 +1,17 @@
+// LONG TERM GOALS //
+
 Keep form data after signup failure
 
 Make sure all file are error checked
 
-Add check request update status for user
+Add check request update status for user (in profile page)
+
+
+// Near GOALS
+
+Finish Song Update Functionality
+
+Add like and plays system to sort stuff on dashboard
+
+
 

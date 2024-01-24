@@ -1,6 +1,6 @@
 <?php
-    //Start session to check if login every page
-    session_start();
+//Start session to check if login every page
+session_start();
 ?>
 
 
@@ -14,6 +14,7 @@
     <title>Navigation</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/ui.css">
+    <link rel="stylesheet" href="css/confirm.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet" />
 </head>
 
@@ -66,35 +67,35 @@
                         <span> Liked Songs </span>
                     </a>
                 </li>
-               <li>
+                <li>
                     <a href='userRequest.php'>
                         <span class='fa-solid fa-bell'></span>
                         <span> Song Requests </span>
                     </a>
-                </li>  
+                </li>
             </ul>
         </div>
 
 
-        <div class="navigation">     
+        <div class="navigation">
             <ul>
- 
+
                 <?php
-                    error_reporting(0);
-                    if ($_SESSION["usersType"] == "admin"){
-  
-                        echo "<li>";
-                        echo    "<a href='admin/admin.php'>";
-                        echo        "<span class='fa-solid fa-lock'></span>";
-                        echo        "<span> Admin Page </span>";
-                        echo    "</a>";
-                        echo "</li>";
-                    }                  ?>
-      
+                error_reporting(0);
+                if ($_SESSION["usersType"] == "admin") {
+
+                    echo "<li>";
+                    echo    "<a href='admin/admin.php'>";
+                    echo        "<span class='fa-solid fa-lock'></span>";
+                    echo        "<span> Admin Page </span>";
+                    echo    "</a>";
+                    echo "</li>";
+                }                  ?>
+
 
             </ul>
 
-        </div>  
+        </div>
 
         <div class="policies">
             <ul>
@@ -112,28 +113,26 @@
         <div class="topbar">
 
             <div class="navbar">
-                    <?php
-                        if (isset($_SESSION["usersName"])){
-                            echo "<h4>" . $_SESSION["usersName"] . "</h4>";
-                            echo "<ul>";
-                            echo "<li class='divider'>|</li>";
-                            echo "<li><a href='profile.php'>Profile</a></li>";  
-                            echo "</ul>";
-                            echo "<a href='includes/logout.inc.php'><button type='button'>Log Out</button></a>";
-                        }
-                        else{
-                            echo "<ul>";
-                            echo "<li class='divider'>|</li>";
-                            echo "<li><a href='signup.php'>Sign Up</a></li>";  
-                            echo "</ul>";
-                            echo "<a href='login.php'><button type='button'>Log In</button></a>";   
-                        }
-                    ?>
+                <?php
+                if (isset($_SESSION["usersName"])) {
+                    echo "<h4>" . $_SESSION["usersName"] . "</h4>";
+                    echo "<ul>";
+                    echo "<li class='divider'>|</li>";
+                    echo "<li><a href='profile.php'>Profile</a></li>";
+                    echo "</ul>";
+                    echo "<a href='includes/logout.inc.php'><button type='button'>Log Out</button></a>";
+                } else {
+                    echo "<ul>";
+                    echo "<li class='divider'>|</li>";
+                    echo "<li><a href='signup.php'>Sign Up</a></li>";
+                    echo "</ul>";
+                    echo "<a href='login.php'><button type='button'>Log In</button></a>";
+                }
+                ?>
+
             </div>
         </div>
     </div>
-
-
 
 
 </body>

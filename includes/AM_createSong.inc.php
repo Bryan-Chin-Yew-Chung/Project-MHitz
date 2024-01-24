@@ -8,10 +8,12 @@
         // Check if input if empty
 
         // Get variables
+        if (isset($_POST["reqID"])){        
+        $reqid = $_POST["reqID"];}
+
         $name = $_POST["name"];
         $artist = $_POST["artist"];
         $year = $_POST["date"];
-
 
         $imgName = $_FILES["songimg"]["name"];
         $imgSize = $_FILES["songimg"]["size"];
@@ -44,8 +46,7 @@
                     $imagePath = "../uploads/" .$newImageName;
                     move_uploaded_file($tmpName, $imagePath );
 
-                    createSong($con , $name , $artist , $year , $newImageName);
-                    
+                    createSong($con , $name , $artist , $year , $newImageName , $reqid);
                 }
                 else{
                     header("location: ../admin/AM_songcreator.php?error=badfile");
