@@ -39,11 +39,15 @@ include_once '../includes/func.inc.php';
         <div class="container">
             <?php if (isset($_GET["error"])) {
                 if ($_GET["error"] == "deletesuccess") {
-                    echo "<h6> Request Deleted! </h6>";
+                    echo "<h5> Request Rejected! </h5>";
                 }
                 if ($_GET["error"] == "requestadded") {
                     echo "<h6> Request Added! </h6>";
                 }
+                if ($_GET["error"] == "crequestadded") {
+                    echo "<h6> Song Added / Request Deleted! </h6>";
+                }
+                
             }
             ?>
 

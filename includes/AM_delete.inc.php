@@ -38,7 +38,7 @@
 
         if($result){
 
-            header("location: ../admin/AM_requestcontrol.php?error=requestadded");
+            header("location: ../admin/AM_requestcontrol.php?error=crequestadded");
         }
         else{
             die(mysqli_error($con));

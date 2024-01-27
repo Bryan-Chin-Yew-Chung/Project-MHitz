@@ -172,8 +172,14 @@
             $_SESSION["usersName"] = $nameExists["usersName"];
             $_SESSION["usersType"] = $row["usersType"];
 
-
-            header("location: ../index.php");
+            if ($_SESSION["usersType"] == "admin"){
+                header("location: ../admin/admin.php");
+                exit();
+            }
+            else{
+                header("location: ../index.php");
+                exit();
+            }
 
 
             exit();
@@ -300,7 +306,10 @@
             exit();
         }
         else {
-            header("location: ../includes/AM_delete.inc.php?cdeletereq=" . $reqID . "");
+            // Fix some weird "Header may not contain more than a single header" error
+            $url = "../includes/AM_delete.inc.php?cdeletereq=" . $reqID . "";
+            $url=str_replace(PHP_EOL, '', $url);
+            header("location: $url");
             exit();
         }
         exit();        

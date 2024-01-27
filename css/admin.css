@@ -175,6 +175,7 @@ body {
 }
 
 .adminDashboard h1{
+    margin-left: 10px;
     color: white;
     font-size: 25px;
     font-weight: bold;
@@ -182,25 +183,41 @@ body {
     padding-bottom: 20px;
 }
 
+.adminDashboard h6{
+    color: white;
+    font-size: 25px;
+    padding-bottom: 20px;
+}
+
 .adminDashboard .adminData{
-    margin-left: 20px;
+    margin-left: 50px;
 }
 
 .adminDashboard .adminData .list{
     display: flex;
-    gap : 20px;
+    gap : 150px;
 }
 
 .adminDashboard .adminData .list .item{
-    display: flex;
-    min-width: 140px;
-    width: 450px;
-    height: 194px;
+    display: inline;
+    min-width: 170px;
+    width: 500px;
+    height: 250px;
     padding: 15px;
     background-color: #181818;
     border-radius: 10px;
     cursor: pointer;
 }
+
+.adminDashboard .adminData .list .itemstuff{
+    display: flex;
+    cursor: pointer;
+    width: 500px;
+    padding: 10px;
+}
+
+
+
 
 .adminDashboard .adminData .list .item .itemgroup{
     width: 150px;
@@ -626,7 +643,7 @@ table img{
 
 .adminDashboard .topRow .search{
     display: flex;
-    width: 50%;
+    width: 40%;
     padding-left : 100px;
     align-items: center;
 }
@@ -650,3 +667,5 @@ table img{
 .adminDashboard .topRow .search i {
     color: white;
 }
+
+

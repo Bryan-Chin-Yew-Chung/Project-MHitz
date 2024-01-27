@@ -4,7 +4,9 @@
 
     // prevent non admin from accesing the page
     if (!isset($_SESSION["usersName"])){
-        header("../includes/logout.inc.php");            
+         if($_GET["usersType"] != "admin"){
+            header("../includes/logout.inc.php"); 
+         }          
     }
 
 ?>
@@ -76,19 +78,10 @@
             <ul>
                 <?php
 
-                    if ($_SESSION["usersType"] == "admin"){
-  
-                        echo "<li>";
-                        echo    "<a href='../index.php'>";
-                        echo        "<span class='fa-solid fa-user'></span>";
-                        echo        "<span> User Page </span>";
-                        echo    "</a>";
-                        echo "</li>";
-                    }
-                    else {
+                    if ($_SESSION["usersType"] != "admin"){
                         // Kill users that access admin page illegally
-                         header("location: ../includes/logout.inc.php");
-                    }               
+                        header("location: ../includes/logout.inc.php");
+                    }           
                 ?>
             </ul>
 

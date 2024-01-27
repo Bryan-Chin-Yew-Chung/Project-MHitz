@@ -1,9 +1,9 @@
 <?php
-include_once 'adminUI.php';
-include_once '../includes/dbh.inc.php';
-include_once '../includes/func.inc.php';
+    include_once 'adminUI.php';
+    include_once '../includes/dbh.inc.php';
+    include_once '../includes/func.inc.php';
 
-
+    $reqid = $_GET['reqid'];
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +60,7 @@ include_once '../includes/func.inc.php';
 <?php  
 
    if(isset($_GET["reqid"])) {
-            $reqid = $_GET['reqid'];
+            
 
             //GET ACCOUNTS
             $sql = "SELECT * from `requests` WHERE songID = $reqid";

@@ -21,35 +21,39 @@
         <!--Data-->
         <div class="adminData">
             <div class="list">
-                <div class="item">
-
+            <div class="item">
+                <h6> Most Liked Song </h6>
+                <div class="itemstuff">
                     <div class="itemgroup">
                         <img src="../assets/song1.jpeg" /> 
                         <h4> Steady Bom Bibi </h4>
                         <p> 低清DISSY </p>
                     </div>
                     <div class="itemdesc">
-                        <h4> This week's top hits </h4>
-                        <h4> Likes : 66</h4>
-                        <h4> Comments : 10</h4>
+                        <h4> Likes : 66 </h4>
+                        <h4> Comments : 10 </h4>
                     </div>
 
 
                 </div>
+                </div>
 
-                <div class="item">
+              <div class="item">
+                <h6> Most Liked Song </h6>
+                <div class="itemstuff">
                     <div class="itemgroup">
-                        <img src="../assets/song2.jpeg" />
-                        <h4> Biarlah Rahsia </h4>
-                        <p> Dato' Sri Siti Nurhaliza </p>
+                        <img src="../assets/song1.jpeg" /> 
+                        <h4> Steady Bom Bibi </h4>
+                        <p> 低清DISSY </p>
                     </div>
                     <div class="itemdesc">
-                        <h4> This week's top hits </h4>
-                        <h4> Likes : 44</h4>
-                        <h4> Comments : 15</h4>
+                        <h4> Likes : 66 </h4>
+                        <h4> Comments : 10 </h4>
                     </div>
+
+
                 </div>
-            </div>
+                </div>
 
         
         </div>
