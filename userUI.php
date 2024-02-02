@@ -1,6 +1,8 @@
 <?php
 //Start session to check if login every page
 session_start();
+
+include_once 'includes/dbh.inc.php';
 ?>
 
 
@@ -46,9 +48,9 @@ session_start();
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="playlist.php">
                         <span class="fa fas fa-plus-square"></span>
-                        <span> Create Playlist </span>
+                        <span>Playlist </span>
                     </a>
                 </li>
             </div>
@@ -64,12 +66,6 @@ session_start();
                     <a href='userRequest.php'>
                         <span class='fa-solid fa-bell'></span>
                         <span> Song Requests </span>
-                    </a>
-                </li>
-                <li>
-                    <a href='userRequest.php'>
-                        <span class='fa-solid fa-music'></span>
-                        <span> Upload Songs </span>
                     </a>
                 </li>
             </ul>

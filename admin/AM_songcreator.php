@@ -31,8 +31,12 @@
                 <input type="text" name="name" placeholder="Song Name..." minlength="1" maxlength="20">
                 <input type="text" name="artist" placeholder="Artist Name..." minlength="1" maxlength="20">
                 <input type="number" min="1940" max="2024" name="date" placeholder="Year Released....">
-                <label> Upload Image [png , jpg , jpeg] </label>
-                <input type="file" name="songimg"  accept=".png, .jpg , .jpeg">
+
+                <label> Upload Image [png , jpg , jpeg]  </label>
+                    <input type="file" name="songimg"  accept=".png, .jpg , .jpeg">
+                <label> Upload Song [mp3]  </label>
+                    <input type="file" name="songaudio"  accept=".mp3">
+                
                 <?php
                 // Return error messages
                 if (isset($_GET["error"])) {
@@ -113,6 +117,7 @@
 
     </div>
     </div>
+
 </body>
 
 </html>

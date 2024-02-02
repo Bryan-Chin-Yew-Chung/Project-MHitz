@@ -1,5 +1,8 @@
 <?php
     include_once 'userUI.php';
+    include_once 'includes/dbh.inc.php';
+    include_once 'includes/func.inc.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -15,80 +18,49 @@
 <body>
         <div class = "search">
             <form class="searcharea" action = "searchresult.php" method = "POST">
-                <input type = "text" name="searchbox" placeholder="Search... ">
+                <input type = "text" name="searchbox" placeholder="Enter Song Name / Artist / Year.... ">
                 <button type = "submit" name="submitsearch"><i class="fa-solid fa-magnifying-glass fa-2x"></i></button>
             </form>            
         </div>
+
 
 
         <div class="display">
-
             <div class = "list">
-                <div class="item">
-                <img src= "assets/song1.jpeg" />
-                    <div class = "play">
-                        <span class = "fa fa-play"> </span>
-                    </div>
-                    <h4> GAmer Hits </h4>
-                    <p> Wololo </p>
-                </div>
-                <div class="item">
-                <img src= "assets/song1.jpeg" />
-                    <div class = "play">
-                        <span class = "fa fa-play"> </span>
-                    </div>
-                    <h4> GAmer Hits </h4>
-                    <p> Wololo </p>
-                </div>
-                <div class="item">
-                <img src= "assets/song1.jpeg" />
-                    <div class = "play">
-                        <span class = "fa fa-play"> </span>
-                    </div>
-                    <h4> GAmer Hits </h4>
-                    <p> Wololo </p>
-                </div>
-                <div class="item">
-                <img src= "assets/song1.jpeg" />
-                    <div class = "play">
-                        <span class = "fa fa-play"> </span>
-                    </div>
-                    <h4> GAmer Hits </h4>
-                    <p> Wololo </p>
-                </div>
-                <div class="item">
-                <img src= "assets/song1.jpeg" />
-                    <div class = "play">
-                        <span class = "fa fa-play"> </span>
-                    </div>
-                    <h4> GAmer Hits </h4>
-                    <p> Wololo </p>
-                </div>
-                <div class="item">
-                <img src= "assets/song1.jpeg" />
-                    <div class = "play">
-                        <span class = "fa fa-play"> </span>
-                    </div>
-                    <h4> GAmer Hits </h4>
-                    <p> Wololo </p>
-                </div>
-                <div class="item">
-                <img src= "assets/song1.jpeg" />
-                    <div class = "play">
-                        <span class = "fa fa-play"> </span>
-                    </div>
-                    <h4> GAmer Hits </h4>
-                    <p> Wololo </p>
-                </div>
+               <?php
+                //GET ACCOUNTS
+                $sql = "SELECT * from `songs` LIMIT 20";
+                $result = mysqli_query($con, $sql);
+
+
+                if ($result) {
+                        while ($row = mysqli_fetch_assoc($result)){
+                            
+                                $id = $row['songID'];
+                                $name = $row['songName'];
+                                $artist = $row['songArtist'];
+                                $year = $row['songYear'];
+                                $img = $row['songImg'];
+
+                                echo '
+                                    <a href="displaysong.php?songid=' . $id . '">
+                                        <div class="item" >
+                                            <img src="../uploads/' . $row['songImg'] . '"/>
+                                                <div class = "play">
+                                                    <span class = "fa fa-play"> </span>
+                                                </div>
+                                            <h4>' . $name . '</h4>
+                                            <p>' . $artist . '</p>
+                                        </div> 
+                                    </a>';
+                            }
+                }           
+                ?>
+
+
             </div>
     </div>
 
-        <div class = "search">
-            <form class="searcharea" action = "searchresult.php" method = "POST">
-                <input type = "text" name="searchbox" placeholder="Search... ">
-                <button type = "submit" name="submitsearch"><i class="fa-solid fa-magnifying-glass fa-2x"></i></button>
-            </form>            
-        </div>
 
 </body>
 </html>

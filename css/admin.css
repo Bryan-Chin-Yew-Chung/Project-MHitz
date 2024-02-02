@@ -587,6 +587,10 @@ td .Deny{
     margin-bottom: 20px;
 }
 
+.songcreator form label{
+    cursor: pointer;
+}
+
 .songcreator button{
     width: 106%;
     height: 35px;

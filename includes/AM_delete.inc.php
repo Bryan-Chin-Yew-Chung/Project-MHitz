@@ -1,6 +1,15 @@
 <?php 
     include_once "dbh.inc.php";
 
+    if(isset($_GET['deleteplaylist'])){
+        $id = $_GET['deleteplaylist'];
+
+
+        $sql = "DELETE from `playlists` WHERE userID = '$id'";
+        mysqli_query($con,$sql);
+
+    }
+
     if(isset($_GET['deleteid'])){
         $id = $_GET['deleteid'];
 
@@ -14,6 +23,9 @@
             die(mysqli_error($con));
         }
     }
+
+
+
 
     else if(isset($_GET['deletereq'])){
         $id = $_GET['deletereq'];
@@ -32,9 +44,8 @@
     else if(isset($_GET['cdeletereq'])){
         $id = $_GET['cdeletereq'];
 
-        echo $id;
         $sql = "DELETE from `requests` WHERE songID = $id";
-        $result=mysqli_query($con,$sql);
+        $result = mysqli_query($con,$sql);
 
         if($result){
 
@@ -45,9 +56,9 @@
         }
     }
 
-        //$sql = "SELECT usersType FROM users WHERE usersName = '$name';";
-        //$result = mysqli_query($con , $sql);
-        //$row = mysqli_fetch_assoc($result);
+    //$sql = "SELECT usersType FROM users WHERE usersName = '$name';";
+    //$result = mysqli_query($con , $sql);
+    //$row = mysqli_fetch_assoc($result);
 
     else if(isset($_GET['deletesong'])){
         $id = $_GET['deletesong'];
@@ -56,9 +67,10 @@
 
         while ($row = $query->fetch_assoc()) {
             $imagePath = "../uploads/" . $row['songImg'];
+            $songPath = "../uploads/" . $row['songAudio'];
         }
-        echo $imagePath;
         unlink($imagePath);
+        unlink($songPath);
 
         $sql = "DELETE from `songs` WHERE songID = $id";
         $result=mysqli_query($con,$sql);

@@ -58,7 +58,7 @@
                     <th scope="col"> Year </th>
                     <th scope="col"> Listen </th>
                     <th scope="col"> Likes </th>
-                    <th scope="col"> Comments </th>
+                    <th scope="col"> Plays </th>
                     <th scope="col"> Operations </th>
                 </thread>
 
@@ -77,6 +77,8 @@
                         $artist = $row['songArtist'];
                         $year = $row['songYear'];
                         $img = $row['songImg'];
+                        $like = $row['songLike'];
+                        $play = $row['songPlays'];
 
                         echo '<tr>
                             <td> <img src="../uploads/' . $row['songImg'] . '" ></td>
@@ -84,10 +86,9 @@
                             <td>' . $artist . '</td>
                             <td>' . $year . '</td>
                             <td> <i class="fa-solid fa-play"></i> </td>
-                            <td> 5 </td>
-                            <td> 10 </td>
+                            <td>' . $like . '</td>
+                            <td>' . $play . '</td>
                         <td>    
-                             <a href=""> <button class="Edit"> Update </button>  </a> 
                              <a class = "delete" href="../includes/AM_delete.inc.php?deletesong=' . $id . '"> <button class="Delete"> Delete </button> </a> 
                         </td>
                         </tr>';

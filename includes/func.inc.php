@@ -112,6 +112,8 @@
     function createUser($con , $name , $email , $pwd){
         $sql = "INSERT INTO users (usersName , usersEmail , usersPwd) VALUES (? , ? , ?)";
 
+        createPlayList($con , $name);
+
         // Prevent code injection
         $stmt = mysqli_stmt_init($con);
         if(!mysqli_stmt_prepare($stmt , $sql)){
@@ -192,6 +194,8 @@
     function adminCreateUser($con , $name , $email , $pwd){
         $sql = "INSERT INTO users (usersName , usersEmail , usersPwd) VALUES (? , ? , ?)";
 
+        createPlayList($con , $name);
+
         // Prevent code injection
         $stmt = mysqli_stmt_init($con);
         if(!mysqli_stmt_prepare($stmt , $sql)){
@@ -208,6 +212,21 @@
 
         header("location: ../admin/AM_accountcreator.php?error=noneuser");
         exit();
+    }
+
+    function createPlaylist($con , $name){
+        $sql = "INSERT INTO playlists (userID) VALUES (?)";
+
+        $stmt = mysqli_stmt_init($con);
+        if(!mysqli_stmt_prepare($stmt , $sql)){
+            header("location: ../admin/AM_accountcreator.php?error=statementfailed");
+            exit();
+        }
+
+
+        mysqli_stmt_bind_param($stmt, "s" , $name);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
     }
 
     function createAdmin($con , $name , $email , $pwd){
@@ -286,8 +305,8 @@
     } 
 
     // Create song
-    function createSong($con , $songName , $songArtist , $songYear , $songImg , $reqID){
-        $sql = "INSERT INTO songs (songName , songArtist , songYear , songImg) VALUES (? , ? , ? , ?)";
+    function createSong($con , $songName , $songArtist , $songYear , $songImg , $songAudio , $songLike , $songPlays, $reqID){
+        $sql = "INSERT INTO songs (songName , songArtist , songYear , songImg , songAudio , songLike , songPlays) VALUES (? , ? , ? , ? , ? , ? , ?)";
 
         // Prevent code injection
         $stmt = mysqli_stmt_init($con);
@@ -297,21 +316,23 @@
         }
 
 
-        mysqli_stmt_bind_param($stmt, "ssss" , $songName , $songArtist , $songYear , $songImg);
+        mysqli_stmt_bind_param($stmt, "sssssss" , $songName , $songArtist , $songYear , $songImg , $songAudio , $songLike , $songPlays);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
-        if ($reqID == 0){
-            header("location: ../admin/AM_songcreator.php?error=songadded");
-            exit();
-        }
-        else {
+        if (!isset($reqID)){
             // Fix some weird "Header may not contain more than a single header" error
             $url = "../includes/AM_delete.inc.php?cdeletereq=" . $reqID . "";
             $url=str_replace(PHP_EOL, '', $url);
             header("location: $url");
             exit();
         }
+        else {
+
+            header("location: ../admin/AM_songcreator.php?error=songadded");
+            exit();
+        }
+        
         exit();        
     }
 
