@@ -13,7 +13,7 @@
         $userID = $_SESSION['usersName'];
 
 
-
+        error_reporting(0);
         
 ?>
 
@@ -50,13 +50,26 @@
 
                     echo '<div class="musicplayer">
                         <nav>
-                            <a href = "search.php"><div class="circle">
+                            <a href="javascript:history.back()"><div class="circle">
                                 <i class="fa-solid fa-angle-left"> </i> 
                             </div></a>';
                                 if(isset($_SESSION['usersName'])){
-                                    echo '<div class="circle">
+                                    $sql2 = "SELECT songID from `likes` WHERE userID = '$userID'";
+                                    $result2 = mysqli_query($con,$sql2);
+                                    $row2 = mysqli_fetch_assoc($result2);
+
+                                    $liked = $row2['songID'];
+                                    
+                                    if($liked == $songID){
+                                        echo '<a href = "includes/likesong.inc.php?ulname=' . $_SESSION['usersName'] . '&ulsongid='. $songID . '"><div class="circle1">
+                                            <i class="fa-regular fa-thumbs-up"></i>
+                                            </div></a>';
+                                    }
+                                    else {
+                                        echo '<a href = "includes/likesong.inc.php?name=' . $_SESSION['usersName'] . '&songid='. $songID . '"><div class="circle">
                                         <i class="fa-regular fa-thumbs-up"></i>
-                                        </div>';
+                                        </div></a>';
+                                    }
 
 
                                 // FOR LOOP TO CHECK IF SONG ALREADY EXISTS ON PLAYLIST
@@ -105,11 +118,30 @@
 
                             <div class="controls">
                                 <a href="javascript:history.back()"> <div> <i class="fa-solid fa-backward"></i> </div> </a>
-                                <div onclick = "playPause()"> <i class="fa-solid fa-play" id = "ctrlIcon"></i> </div>    
-                                <div> <i class="fa-solid fa-forward"></i> </div>
-                            </div>
-                    </div>';
-                }           
+                                <div onclick = "playPause()"> <i class="fa-solid fa-play" id = "ctrlIcon"></i> </div>';
+                            
+
+                                // SHUFFLE SONG
+                                $sql = "SELECT songID from `songs` ORDER BY RAND() LIMIT 1";
+                                $result = mysqli_query($con, $sql);
+                                if($result){
+                                    $row = mysqli_fetch_assoc($result);
+                                    $id = $row["songID"];
+                                    echo '<a href="displaysong.php?songid=' . $id . '"> <div> <i class="fa-solid fa-shuffle"></i> </div></a>';
+                                }
+
+                                
+
+                }
+                        echo'</div>';
+                            
+                        if (isset($_GET["error"])){
+                        if($_GET["error"] == "playlistfull"){
+                            echo "<h6> Playlist Full! </h6>";
+                        }
+                    }
+                    
+                    echo' </div>';        
                 ?>
 
 

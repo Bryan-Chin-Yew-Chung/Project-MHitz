@@ -237,6 +237,7 @@ body {
     line-height: 40px;
     background: #fff;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .song-img {
@@ -473,4 +474,14 @@ td .Delete{
     line-height: 40px;
     background: lightgreen;
     cursor: pointer;
+}
+
+tr.darkgreen {
+    background-color: darkgreen;
+}
+
+h6{
+    color: red;
+    padding-top: 10px;
+    font-size: 24px;
 }

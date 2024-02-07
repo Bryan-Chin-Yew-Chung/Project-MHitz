@@ -57,7 +57,7 @@ include_once 'includes/dbh.inc.php';
             <div class="navigation">
                 <ul>
                 <li>
-                    <a href="#">
+                    <a href="likedsong.php">
                         <span class="fa fas fa-heart"></span>
                         <span> Liked Songs </span>
                     </a>

@@ -41,6 +41,10 @@
                 exit();
             }           
         }
+
+        else {
+                header("location: ../displaysong.php?songid=" . $songID . "&error=playlistfull");
+        }
     }
 
 
