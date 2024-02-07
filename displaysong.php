@@ -10,6 +10,10 @@
         $sqlplay = $query = "UPDATE songs SET songPlays = songPlays + 1 WHERE songID = $songID";
         mysqli_query($con,$sqlplay);
 
+        $userID = $_SESSION['usersName'];
+
+
+
         
 ?>
 
@@ -27,9 +31,12 @@
     <div class="container"> 
 
             <?php
+
+
                 //GET SONG DETAIL AND SHOW
                 $sql = "SELECT * from `songs` WHERE songID = $songID";
                 $result = mysqli_query($con,$sql);
+
 
                 if ($result) {
                     $row = mysqli_fetch_assoc($result);
@@ -45,16 +52,43 @@
                         <nav>
                             <a href = "search.php"><div class="circle">
                                 <i class="fa-solid fa-angle-left"> </i> 
-                            </div></a>
-                            <div class="circle">
-                                <i class="fa-regular fa-thumbs-up"></i>
-                            </div>';
-                            if(isset($_SESSION['usersName'])){
-
-                            echo' <a href = "addtoplaylist.php?username=' . $_SESSION['usersName'] . '&songID='. $songID . '"> <div class="circle">
-                                <i class="fa-regular fa-plus"></i>
                             </div></a>';
-                            }
+                                if(isset($_SESSION['usersName'])){
+                                    echo '<div class="circle">
+                                        <i class="fa-regular fa-thumbs-up"></i>
+                                        </div>';
+
+
+                                // FOR LOOP TO CHECK IF SONG ALREADY EXISTS ON PLAYLIST
+                                for ($x = 1; $x <= 10; $x++) {
+                                        $sql1 = "SELECT song$x from `playlists` WHERE usersID = '$userID'";
+                                        $result1 = mysqli_query($con,$sql1);
+                                        $row1 = mysqli_fetch_assoc($result1);
+
+                                        $song = $row1['song' . $x .''];
+
+                                        if ($song == $songID){
+                                            $color = 1;
+                                            break;
+                                        }
+                                        else{
+                                            $color = 0;
+                                        }
+                                }   
+
+                                        if ($color == 1){
+                                            echo' <a href = "includes/AM_delete.inc.php?deleteplaylistdisplayn=' . $_SESSION['usersName'] . '&deleteplaylistdisplays='. $songID . '"> <div class="circle1">
+                                                <i class="fa-regular fa-plus"></i>
+                                            </div> </a>';
+                                        }
+                                        else{
+                                            echo' <a href = "includes/addtoplaylist.php?username=' . $_SESSION['usersName'] . '&songID='. $songID . '"> <div class="circle">
+                                                <i class="fa-regular fa-plus"></i>
+                                            </div></a>';
+                                        }                                 
+                         
+
+                                }
 
 
                 echo'   </nav>     
@@ -70,7 +104,7 @@
                         <input type = "range" value = "0" id ="progress">
 
                             <div class="controls">
-                                <div> <i class="fa-solid fa-backward"></i> </div>
+                                <a href="javascript:history.back()"> <div> <i class="fa-solid fa-backward"></i> </div> </a>
                                 <div onclick = "playPause()"> <i class="fa-solid fa-play" id = "ctrlIcon"></i> </div>    
                                 <div> <i class="fa-solid fa-forward"></i> </div>
                             </div>

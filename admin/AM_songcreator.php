@@ -28,8 +28,8 @@
             <br>
             <form action="../includes/AM_createSong.inc.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="reqID" value=" <?php echo $reqid ?>">
-                <input type="text" name="name" placeholder="Song Name..." minlength="1" maxlength="20">
-                <input type="text" name="artist" placeholder="Artist Name..." minlength="1" maxlength="20">
+                <input type="text" name="name" placeholder="Song Name..." minlength="1" maxlength="80">
+                <input type="text" name="artist" placeholder="Artist Name..." minlength="1" maxlength="80">
                 <input type="number" min="1940" max="2024" name="date" placeholder="Year Released....">
 
                 <label> Upload Image [png , jpg , jpeg]  </label>

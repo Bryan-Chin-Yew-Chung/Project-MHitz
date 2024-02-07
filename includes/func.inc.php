@@ -215,7 +215,7 @@
     }
 
     function createPlaylist($con , $name){
-        $sql = "INSERT INTO playlists (userID) VALUES (?)";
+        $sql = "INSERT INTO playlists (usersID) VALUES (?)";
 
         $stmt = mysqli_stmt_init($con);
         if(!mysqli_stmt_prepare($stmt , $sql)){
@@ -358,9 +358,5 @@
         header("location: ../userRequest.php?error=none");
         exit();
     }
-
-
-
-
 
 

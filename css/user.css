@@ -221,7 +221,6 @@ body {
     width: 400px;
     padding: 25px 35px;
     margin-left: 40px;
-    margin-right: 100px;
     text-align: center;
 }
 
@@ -391,6 +390,87 @@ body {
     text-decoration: none;
 }
 
+table{
+
+    width: 100%;
+    text-align: left;
+    table-layout: auto;
+}
 
 
 
+th{
+    background-color: #333131;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+tr{
+    background-color: #181818;
+}
+
+td{
+    white-space: nowrap;
+    overflow: hidden;
+    height: 40px;
+    width: 180px;
+    text-overflow: ellipsis; 
+    vertical-align: middle;
+    color: white;
+    font-size: 15px;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+}
+
+
+
+td a {
+    text-decoration: none;
+
+}
+
+td button{
+    border: 1px solid black;
+    border-radius: 1.5px;
+    width: 66px;
+    height: 36px;
+    color: white;
+    cursor: pointer;
+}
+
+td img{
+    width: 50px;
+
+}
+
+td .Delete{
+    background-color: red;
+    border-radius: 3px;
+}
+
+
+.musicplayer1{
+    background: #333;
+    width: 600px;
+    padding: 25px 35px;
+    margin-left: 40px;
+    text-align: center;  
+}
+
+.musicplayer1 h1{
+    font-size: 30px;
+    color: white;
+    padding-bottom: 16px;
+}
+
+.container .musicplayer nav .circle1{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: lightgreen;
+    cursor: pointer;
+}
