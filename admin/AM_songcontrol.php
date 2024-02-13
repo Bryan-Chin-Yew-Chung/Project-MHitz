@@ -1,7 +1,7 @@
 <?php
-    include_once 'adminUI.php';
-    include_once '../includes/dbh.inc.php';
-    include_once '../includes/func.inc.php';
+include_once 'adminUI.php';
+include_once '../includes/dbh.inc.php';
+include_once '../includes/func.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -32,9 +32,9 @@
     <div class="adminDashboard">
         <div class="topRow">
             <h1> Song Manager </h1>
-            <form class="search" action = "AM_search.php" method= "POST">
-                <input type = "text" name="searchbox" placeholder="Search... ">
-                <button type = "submit" name="submitsearch"><i class="fa-solid fa-magnifying-glass fa-2x"></i></button>
+            <form class="search" action="AM_search.php" method="POST">
+                <input type="text" name="searchbox" placeholder="Search... ">
+                <button type="submit" name="submitsearch"><i class="fa-solid fa-magnifying-glass fa-2x"></i></button>
             </form>
             <form class="addUserButton">
                 <input type="submit" value="Create Song" formaction="AM_songcreator.php">
@@ -66,7 +66,7 @@
                 <!--Get data from database-->
                 <?php
                 //GET ACCOUNTS
-                $sql = "SELECT * from `songs`";
+                $sql = "SELECT * from `songs` ORDER BY songName";
                 $result = mysqli_query($con, $sql);
 
 
@@ -77,16 +77,27 @@
                         $artist = $row['songArtist'];
                         $year = $row['songYear'];
                         $img = $row['songImg'];
-                        $like = $row['songLike'];
                         $play = $row['songPlays'];
+                        $mp3 = $row['songAudio'];
 
                         echo '<tr>
-                            <td> <img src="../uploads/' . $row['songImg'] . '" ></td>
+                            <td> <img src="../uploads/' . $img . '" ></td>
                             <td>' . $name . '</td>
                             <td>' . $artist . '</td>
                             <td>' . $year . '</td>
-                            <td> <i class="fa-solid fa-play"></i> </td>
-                            <td>' . $like . '</td>
+                            <td> <audio controls>
+                                <source src="../uploads/'. $mp3 .'">
+                                </audio>
+                            </td>';
+
+                                $sql2 = "SELECT * from `likes` WHERE songID = $id";
+                                $result2 = mysqli_query($con, $sql2);
+                                $queryResult = mysqli_num_rows($result2);
+
+                                echo'
+                            <td>' . $queryResult . '</td>
+
+
                             <td>' . $play . '</td>
                         <td>    
                              <a class = "delete" href="../includes/AM_delete.inc.php?deletesong=' . $id . '"> <button class="Delete"> Delete </button> </a> 

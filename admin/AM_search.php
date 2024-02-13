@@ -1,7 +1,8 @@
 <?php
-    include_once 'adminUI.php';
-    include_once '../includes/dbh.inc.php';
-    include_once '../includes/func.inc.php';
+include_once 'adminUI.php';
+include_once '../includes/dbh.inc.php';
+include_once '../includes/func.inc.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -32,9 +33,9 @@
     <div class="adminDashboard">
         <div class="topRow">
             <h1> Song Manager </h1>
-            <form class="search" action = "AM_search.php" method = "POST">
-                <input type = "text" name="searchbox" placeholder="Search... ">
-                <button type = "submit" name="submitsearch"><i class="fa-solid fa-magnifying-glass fa-2x"></i></button>
+            <form class="search" action="AM_search.php" method="POST">
+                <input type="text" name="searchbox" placeholder="Search... ">
+                <button type="submit" name="submitsearch"><i class="fa-solid fa-magnifying-glass fa-2x"></i></button>
             </form>
             <form class="addUserButton">
                 <input type="submit" value="Create Song" formaction="AM_songcreator.php">
@@ -65,19 +66,19 @@
 
                 <!--Get data from database-->
                 <?php
-                if (isset($_POST['submitsearch'])){
-                    if(!empty($_POST['searchbox'])){
+                if (isset($_POST['submitsearch'])) {
+                    if (!empty($_POST['searchbox'])) {
 
-                    $search = mysqli_real_escape_string($con , $_POST['searchbox']);
-                    //GET ACCOUNTS
-                    $sql = "SELECT * from `songs` WHERE songName LIKE '%$search%' OR songArtist LIKE '%$search%' 
-                    OR songYear = '$search'";
-                    $result = mysqli_query($con, $sql);
-                    $queryResult = mysqli_num_rows($result);
+                        $search = mysqli_real_escape_string($con, $_POST['searchbox']);
+                        //GET ACCOUNTS
+                        $sql = "SELECT * from `songs` WHERE songName LIKE '%$search%' OR songArtist LIKE '%$search%' 
+                    OR songYear = '$search' ORDER BY songName";
+                        $result = mysqli_query($con, $sql);
+                        $queryResult = mysqli_num_rows($result);
 
 
 
-                    if($queryResult > 0){
+                        if ($queryResult > 0) {
                             echo "<h2> There are " . $queryResult . " results </h2> ";
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $id = $row['songID'];
@@ -100,18 +101,54 @@
                                 </td>
                                 </tr>';
                             }
-                    }
-                    else{
-                           echo  '<h2>No items matched your search</h2>';
-                                   
-                    }
-                    }
-
-                    else {
+                        } else {
+                            echo  '<h2>No items matched your search</h2>';
+                        }
+                    } else {
                         exit();
                     }
                 }
-                else{
+                if (isset($_GET['search'])) {
+                    if (!empty($_GET['search'])) {
+
+                        $search = mysqli_real_escape_string($con, $_GET['search']);
+                        //GET ACCOUNTS
+                        $sql = "SELECT * from `songs` WHERE songName LIKE '%$search%' OR songArtist LIKE '%$search%' 
+                        OR songYear = '$search' ORDER BY songName";
+                        $result = mysqli_query($con, $sql);
+                        $queryResult = mysqli_num_rows($result);
+
+
+
+                        if ($queryResult > 0) {
+                            echo "<h2> There are " . $queryResult . " results </h2> ";
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $id = $row['songID'];
+                                $name = $row['songName'];
+                                $artist = $row['songArtist'];
+                                $year = $row['songYear'];
+                                $img = $row['songImg'];
+
+                                echo '<tr>
+                                    <td> <img src="../uploads/' . $row['songImg'] . '" ></td>
+                                    <td>' . $name . '</td>
+                                    <td>' . $artist . '</td>
+                                    <td>' . $year . '</td>
+                                    <td> <i class="fa-solid fa-play"></i> </td>
+                                    <td> 5 </td>
+                                    <td> 10 </td>
+                                <td>    
+                                    <a class = "delete" href="../includes/AM_delete.inc.php?deletesong=' . $id . '"> <button class="Delete"> Delete </button> </a> 
+                                </td>
+                                </tr>';
+                            }
+                        } else {
+                            echo  '<h2>No items matched your search</h2>';
+                        }
+                    } else {
+                        exit();
+                    }
+                } else {
                     header("location: AM_songcontrol");
                     exit();
                 }

@@ -100,12 +100,16 @@ body {
     position: absolute;
     top: 100px;
     right: 0;
-    padding-right: 88px;
+    padding-right: 28px;
 }
 
 .search h1{
     color:white;
     font-size: 25px;
+}
+
+.search input{
+    padding-left: 10px;
 }
 
 .searcharea{
@@ -144,7 +148,7 @@ body {
     flex-wrap: wrap;
     font-size: 22px;
     gap: 20px;
-    width: 80%;
+    width: 90%;
 }
 
 .display .list a{
@@ -327,7 +331,7 @@ body {
     flex-wrap: wrap;
     font-size: 22px;
     gap: 20px;
-    width: 80%;
+    width: 90%;
 }
 
 .indexdisplay .list a{
@@ -392,7 +396,9 @@ body {
 }
 
 table{
-
+    display: block;
+    height: 500px;
+    overflow-y: scroll;
     width: 100%;
     text-align: left;
     table-layout: auto;
@@ -414,11 +420,12 @@ tr{
 }
 
 td{
+    padding: 5px;
     white-space: nowrap;
     overflow: hidden;
     height: 40px;
     width: 180px;
-    text-overflow: ellipsis; 
+    text-overflow:ellipsis;
     vertical-align: middle;
     color: white;
     font-size: 15px;
@@ -440,6 +447,7 @@ td button{
     height: 36px;
     color: white;
     cursor: pointer;
+    margin-left: 50px;
 }
 
 td img{
@@ -474,6 +482,7 @@ td .Delete{
     line-height: 40px;
     background: lightgreen;
     cursor: pointer;
+    text-decoration: none;
 }
 
 tr.darkgreen {
@@ -484,4 +493,136 @@ h6{
     color: red;
     padding-top: 10px;
     font-size: 24px;
+}
+
+i{
+    text-decoration: none;
+}
+
+a {
+  color:inherit;
+}
+
+.profilecontainer{
+    width: 100%;
+    padding: 10px 224px;
+}
+
+.profilecontainer .storage{
+    width: 75%;
+    padding: 30px;
+    height: 420px;
+    background-color: #181818;
+    display: flex;
+}
+
+.profilecontainer .storage .infocontainer{
+    padding: 30px;
+    width: 420px;
+    background-color: #333131;
+    margin-right : 30px;
+}
+
+
+.profilecontainer .storage .infocontainer h1{
+    color: white;
+    font-size: 20px;
+    padding-bottom: 18px;
+
+}
+
+.profilecontainer .storage .infocontainer h2{
+    color: rgb(119, 30, 30);
+    font-size: 25px;
+    padding-bottom: 18px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 2px 2px #000000;
+}
+
+.profilecontainer .storage .infocontainer h3{
+    color: rgb(36, 125, 37);
+    font-size: 25px;
+    padding-bottom: 18px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 2px 2px #000000;
+}
+
+.profilecontainer .storage .infocontainer button{
+    border: 1px solid black;
+    border-radius: 1.5px;
+    height: 36px;
+    color: black;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.profilecontainer form input{
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.creatordisplay h1{
+    color: white;
+    font-weight: bold;
+    font-size: 26px;
+    padding-bottom: 10px;
+}
+
+.creatordisplay{
+    width: 100%;
+    padding: 10px 224px;
+
+}
+
+.creatordisplay .list{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 22px;
+    gap: 20px;
+    width: 90%;
+}
+
+.creatordisplay .list a{
+    flex: 0 1 15%;
+    min-width: 140px;
+    padding: 15px;
+    background-color: #181818;
+    border-radius: 6px;
+    cursor:auto;
+    transition : all ease 0.4s;
+    text-decoration: none;
+}
+
+.creatordisplay .list a img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+
+
+.creatordisplay .list a h4{
+    color: white;
+    font-size: 14px;
+    margin: 10px;
+    padding-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+}
+
+.creatordisplay .list a p{
+    color: #989898;
+    margin: 10px;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 600;
+    text-decoration: none;
 }

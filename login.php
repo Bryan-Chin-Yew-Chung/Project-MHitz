@@ -22,6 +22,10 @@
                         if($_GET["error"] == "none"){
                             echo "<h3> Signup sucessful please log in! </h3>";
                         }
+                        if($_GET["error"] == "updatesuccess"){
+                            echo "<h3> Data Updated Please Login! </h3>";
+                        }
+                        
                         if($_GET["error"] == "emptyinput"){
                             echo "<h1> Require input is missing! </h1>";
                         }

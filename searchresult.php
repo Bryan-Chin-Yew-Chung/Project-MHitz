@@ -30,7 +30,7 @@
                <?php
                     $search = mysqli_real_escape_string($con , $_POST['searchbox']);
                     //GET SONGS
-                    $sql = "SELECT * from `songs` WHERE songName LIKE '%$search%' OR songArtist LIKE '%$search%' ";
+                    $sql = "SELECT * from `songs` WHERE songName LIKE '%$search%' OR songArtist LIKE '%$search%' ORDER BY songName";
                     $result = mysqli_query($con, $sql);
                     $queryResult = mysqli_num_rows($result);
 

@@ -74,11 +74,9 @@ include_once 'includes/dbh.inc.php';
         <div class="policies">
             <ul>
                 <li>
-                    <a href="#"> Cookies </a>
+                    <a href="creators.php"> Creators </a>
                 </li>
-                <li>
-                    <a href="#"> Privacy </a>
-                </li>
+
             </ul>
         </div>
     </div>

@@ -64,15 +64,6 @@
     }
 
 
-    if(isset($_GET['deleteplaylist'])){
-        $id = $_GET['deleteplaylist'];
-
-
-        $sql = "DELETE from `playlists` WHERE usersID = '$id'";
-        mysqli_query($con,$sql);
-
-    }
-
     if(isset($_GET['deleteid'])){
         $id = $_GET['deleteid'];
 

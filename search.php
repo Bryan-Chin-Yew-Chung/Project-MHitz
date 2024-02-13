@@ -29,7 +29,7 @@
             <div class = "list">
                <?php
                 //GET ACCOUNTS
-                $sql = "SELECT * from `songs` LIMIT 20";
+                $sql = "SELECT * from `songs` LIMIT 20 ";
                 $result = mysqli_query($con, $sql);
 
 

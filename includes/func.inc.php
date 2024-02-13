@@ -110,9 +110,7 @@
 
     // Create user
     function createUser($con , $name , $email , $pwd){
-        $sql = "INSERT INTO users (usersName , usersEmail , usersPwd) VALUES (? , ? , ?)";
-
-        createPlayList($con , $name);
+        $sql = "INSERT INTO users (usersName , usersEmail , usersPwd , userjoinDate) VALUES (? , ? , ? , CURDATE())";
 
         // Prevent code injection
         $stmt = mysqli_stmt_init($con);
@@ -192,9 +190,8 @@
     // ADMIN FUNCTIONS //////////////////////////////////////////
     // Admin Create user
     function adminCreateUser($con , $name , $email , $pwd){
-        $sql = "INSERT INTO users (usersName , usersEmail , usersPwd) VALUES (? , ? , ?)";
+        $sql = "INSERT INTO users (usersName , usersEmail , usersPwd , userjoinDate) VALUES (? , ? , ? , CURDATE())";
 
-        createPlayList($con , $name);
 
         // Prevent code injection
         $stmt = mysqli_stmt_init($con);
@@ -214,23 +211,10 @@
         exit();
     }
 
-    function createPlaylist($con , $name){
-        $sql = "INSERT INTO playlists (usersID) VALUES (?)";
 
-        $stmt = mysqli_stmt_init($con);
-        if(!mysqli_stmt_prepare($stmt , $sql)){
-            header("location: ../admin/AM_accountcreator.php?error=statementfailed");
-            exit();
-        }
-
-
-        mysqli_stmt_bind_param($stmt, "s" , $name);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_close($stmt);
-    }
 
     function createAdmin($con , $name , $email , $pwd){
-        $sql = "INSERT INTO users (usersName , usersEmail , usersPwd , usersType) VALUES (? , ? , ? , ?)";
+        $sql = "INSERT INTO users (usersName , usersEmail , usersPwd , usersType , userjoinDate) VALUES (? , ? , ? , ? , CURDATE())";
 
         // Prevent code injection
         $stmt = mysqli_stmt_init($con);
@@ -280,29 +264,7 @@
         echo "</table>" ;
     }
 
-    function UpdatenoPassword($con , $id , $name , $email, $type){
-        $sql = "UPDATE `users` SET usersID = $id, usersName = '$name',
-        usersEmail = '$email', usersType = '$type'
-        WHERE usersID = $id";
-        $result = mysqli_query($con, $sql);
-        if($result){
-            header("location: ../admin/AM_accountcontrol.php?error=updatesuccess");
-        }
 
-    }
-
-    function UpdatePassword($con , $id , $name , $email, $pwd, $type){
-        //Big Brain password hashing
-        $hashPwd = password_hash($pwd , PASSWORD_DEFAULT);
-        $sql = "UPDATE `users` SET usersID = $id, usersName = '$name',
-        usersEmail = '$email', usersPwd = '$hashPwd' , usersType = '$type'
-        WHERE usersID = $id";
-
-        $result = mysqli_query($con, $sql);
-        if($result){
-            header("location: ../admin/AM_accountcontrol.php?error=updatesuccess");
-        }
-    } 
 
     // Create song
     function createSong($con , $songName , $songArtist , $songYear , $songImg , $songAudio , $songLike , $songPlays, $reqID){
@@ -359,4 +321,50 @@
         exit();
     }
 
+    function UpdatenoPassword($con , $id , $name , $email, $type){
+        $sql = "UPDATE `users` SET usersID = $id, usersName = '$name',
+        usersEmail = '$email', usersType = '$type'
+        WHERE usersID = $id";
+        $result = mysqli_query($con, $sql);
+        if($result){
+            header("location: ../admin/AM_accountcontrol.php?error=updatesuccess");
+        }
 
+    }
+
+    function UpdatePassword($con , $id , $name , $email, $pwd, $type){
+        //Big Brain password hashing
+        $hashPwd = password_hash($pwd , PASSWORD_DEFAULT);
+        $sql = "UPDATE `users` SET usersID = $id, usersName = '$name',
+        usersEmail = '$email', usersPwd = '$hashPwd' , usersType = '$type'
+        WHERE usersID = $id";
+
+        $result = mysqli_query($con, $sql);
+        if($result){
+            header("location: ../admin/AM_accountcontrol.php?error=updatesuccess");
+        }
+    } 
+
+    function userUpdatenoPassword($con , $id , $name , $email){
+        $sql = "UPDATE `users` SET usersID = $id, usersName = '$name',
+        usersEmail = '$email' 
+        WHERE usersID = $id";
+        $result = mysqli_query($con, $sql);
+        if($result){
+            header("location: ../login.php?error=updatesuccess");
+        }
+
+    }
+
+    function userUpdatePassword($con , $id , $name , $email, $pwd){
+        //Big Brain password hashing
+        $hashPwd = password_hash($pwd , PASSWORD_DEFAULT);
+        $sql = "UPDATE `users` SET usersID = $id, usersName = '$name',
+        usersEmail = '$email', usersPwd = '$hashPwd'  
+        WHERE usersID = $id";
+
+        $result = mysqli_query($con, $sql);
+        if($result){
+            header("location: ../login.php?error=updatesuccess");
+        }
+    } 

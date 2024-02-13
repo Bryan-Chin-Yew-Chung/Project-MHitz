@@ -512,6 +512,10 @@ td .Accept{
     background-color: green;
 }
 
+td audio{
+    width: 240px;
+}
+
 
 
 td .Deny{

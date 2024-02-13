@@ -2,12 +2,10 @@
 include_once 'userUI.php';
 include_once 'includes/dbh.inc.php';
 $userID = $_SESSION['usersName'];
-
+error_reporting(0);
 if (!isset($userID)) {
     header('location:login.php');
 };
-
-error_reporting(0);
 
 ?>
 
@@ -33,307 +31,235 @@ error_reporting(0);
             $songID = $_GET['songid'];
             $sqlplay = $query = "UPDATE songs SET songPlays = songPlays + 1 WHERE songID = $songID";
             mysqli_query($con, $sqlplay);
-        }
+        } ?>
 
-        if ($songID == 0) {
-            echo '<div class="musicplayer">
-                            <nav>
-                                <a href = "index.php"><div class="circle">
-                                    <i class="fa-solid fa-angle-left"> </i> 
-                                </div></a>
-                            </nav>     
-                            <img src="assets/mysquare.png"  class ="song-img">
-                            <h1> Playlist</h1>
-                            <p> Choose Song To Start Playing </p>
+        <div class="musicplayer">
+            <nav>
+                <a href="index.php">
+                    <div class="circle">
+                        <i class="fa-solid fa-angle-left"> </i>
+                    </div>
+                </a> <?php
+                        if (isset($_SESSION['usersName'])) {
+                            $sql2 = "SELECT * from `likes` WHERE userID = '$userID' AND songID = '$songID'";
 
-
-                            <audio id ="song">
-                                <source type = "audio/mpeg">
-                            </audio>
-
-                            <input type = "range" value = "0" id ="progress">
-
-                                <div class="controls">
-                                    <a href="javascript:history.back()"> <div> <i class="fa-solid fa-backward"></i> </div> </a>
-                                    <div onclick = "playPause()"> <i class="fa-solid fa-play" id = "ctrlIcon"></i> </div>'; ?>
-            <?php
-            for ($x = 1; $x <= 10; $x++) {
-                $sql = "SELECT song$x from `playlists` WHERE usersID = '$userID'";
-                $result = mysqli_query($con, $sql);
-                if ($result) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $song = $row['song' . $x . ''];
-                        if ($song != 0) {
-                            $sql = "SELECT * from `songs` WHERE songID = $song";
-                            $result = mysqli_query($con, $sql);
-                            $row = mysqli_fetch_assoc($result);
-
-                            $songID = $row['songID'];
-                            echo '<a href="playlist.php?songid=' . $songID . '"> <div> <i class="fa-solid fa-forward"></i> </div></a>';
-                            break 2;
-                        }
-                    }
-                }
-            } ?>
-
-    </div>
-    </div>
-
-    <div class="musicplayer1">
-        <table class="table">
-            <h1> PLAYLIST </h1>
-
-
-            <?php
-            // GO THROUGH PLAYLIST AND DISPLAY ALL SONGS   
-            for ($x = 1; $x <= 10; $x++) {
-                $sql = "SELECT song$x from `playlists` WHERE usersID = '$userID'";
-                $result = mysqli_query($con, $sql);
-                if ($result) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $song = $row['song' . $x . ''];
-                        if ($song != 0) {
-                            $sql = "SELECT * from `songs` WHERE songID = $song";
-                            $result = mysqli_query($con, $sql);
-
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $id = $row['songID'];
-                                $name = $row['songName'];
-                                $artist = $row['songArtist'];
-                                $year = $row['songYear'];
-                                $img = $row['songImg'];
-                                $mp3 = $row['songAudio'];
-
-                                echo '<tr>
-                                            <td> <a href="playlist.php?songid=' . $id . '"><img src="../uploads/' . $row['songImg'] . '" > </a></td>
-                                            <td>' . $name . '</td>
-                                            <td>' . $artist . '</td>
-                                            <td>    
-                                                <a class = "delete" href="../includes/AM_delete.inc.php?removeplaylistsong=' . $id . '&removeplaylistname=' . $userID . '"> <button class="Delete"> <i class="fa-solid fa-x"></i> </button> </a> 
-                                            </td>
-                                        </a>
-                                    </tr>';
-                            }
-                        }
-                    }
-                }
-            }
-            ?>
-        </table>
-    </div>
-    </div>
-    </div>
-<?php
-        } else {
-            $sql = "SELECT * from `songs` WHERE songID = '$songID'";
-            $result = mysqli_query($con, $sql);
-            $row = mysqli_fetch_assoc($result);
-
-            $id = $row['songID'];
-            $name = $row['songName'];
-            $artist = $row['songArtist'];
-            $year = $row['songYear'];
-            $img = $row['songImg'];
-            $mp3 = $row['songAudio'];
-
-            echo '<div class="musicplayer">
-                        <nav>
-                            <a href = "search.php"><div class="circle">
-                                <i class="fa-solid fa-angle-left"> </i> 
-                            </div></a>';
-                        if(isset($_SESSION['usersName'])){
-                            $sql2 = "SELECT songID from `likes` WHERE userID = '$userID'";
-                            $result2 = mysqli_query($con,$sql2);
+                            $result2 = mysqli_query($con, $sql2);
                             $row2 = mysqli_fetch_assoc($result2);
 
-                            $liked = $row2['songID'];
-                            
-                            if($liked == $songID){
-                                echo '<a href = "includes/likesong.inc.php?plulname=' . $_SESSION['usersName'] . '&plulsongid='. $songID . '"><div class="circle1">
-                                    <i class="fa-regular fa-thumbs-up"></i>
-                                    </div></a>';
+                            if ($songID != 0){
+                            // LIKE BUTTON TOGGLE
+                            if ($row2['songID'] == NULL) {
+
+                                echo '<a href = "includes/likesong.inc.php?plname=' . $_SESSION['usersName'] . '&plsongid=' . $songID . '"><div class="circle">
+                                        <i class="fa-regular fa-thumbs-up"></i>
+                                        </div></a>';
+                            } else {
+                                echo '<a href = "includes/likesong.inc.php?plulname=' . $_SESSION['usersName'] . '&plulsongid=' . $songID . '"><div class="circle1">
+                                            <i class="fa-regular fa-thumbs-up"></i>
+                                            </div></a>';
                             }
-                            else {
-                                echo '<a href = "includes/likesong.inc.php?plname=' . $_SESSION['usersName'] . '&plsongid='. $songID . '"><div class="circle">
-                                <i class="fa-regular fa-thumbs-up"></i>
-                                </div></a>';
+
+                            // PLAYLIST BUTTON TOGGLE
+                            $sql3 = "SELECT * from `playlists` WHERE usersID = '$userID' AND songID = '$songID'";
+                            $result3 = mysqli_query($con, $sql3);
+                            $row3 = mysqli_fetch_assoc($result3);
+                            if ($row3['songID'] == NULL) {
+
+                                echo ' <a href = "includes/playlist.inc.php?plusername=' . $_SESSION['usersName'] . '&plsongID=' . $songID . '"> <div class="circle">
+                                                <i class="fa-regular fa-plus"></i>
+                                            </div></a>';
+                            } else {
+                                echo ' <a href = "includes/playlist.inc.php?pldeleteplaylistdisplayname=' . $_SESSION['usersName'] . '&pldeleteplaylistdisplaysong=' . $songID . '"> <div class="circle1">
+                                                <i class="fa-regular fa-plus"></i>
+                                            </div> </a>';
+                            }
+                            }
+                        } ?>
+            </nav>
+            <?php
+
+            if ($songID == 0) {
+                echo '<img src="assets/mysquare.png" class="song-img">
+                <h1> Playlist</h1>
+                <p> Choose Song To Start Playing </p>';
+            } else {
+
+                $sql = "SELECT * from `songs` WHERE songID = '$songID'";
+                $result = mysqli_query($con, $sql);
+                $row = mysqli_fetch_assoc($result);
+
+                $id = $row['songID'];
+                $name = $row['songName'];
+                $artist = $row['songArtist'];
+                $year = $row['songYear'];
+                $img = $row['songImg'];
+                $mp3 = $row['songAudio'];
+
+                echo '   <img src="uploads/' . $img . '"  class ="song-img">
+                        <h1>' . $name . '</h1>
+                        <p>' . $artist . '</p>';
+            } ?>
+
+
+            <audio id="song">
+                <?php
+                echo ' <source src = "uploads/' . $mp3 . '" type = "audio/mpeg">';
+                ?>
+            </audio>
+
+            <input type="range" value="0" id="progress">
+
+            <div class="controls">
+                <a href="javascript:history.back()">
+                    <div> <i class="fa-solid fa-backward"></i> </div>
+                </a>
+                <div onclick="playPause()"> <i class="fa-solid fa-play" id="ctrlIcon"></i> </div>
+
+                <?php
+                if ($songID != 0) {
+                    // GET NEXT SONG IN PLAYLIST
+                    $sql = "SELECT addID FROM `playlists` WHERE usersID = '$userID' AND songID = '$songID' ";
+                    $result = mysqli_query($con, $sql);
+
+                    // IF PLAYLIST GOT ANYTHING
+                    if ($result) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $id = $row['addID'];
+
+                            $sql2 = "SELECT songID FROM `playlists` WHERE usersID = '$userID' AND addID > '$id' LIMIT 1";
+                            $result2 = mysqli_query($con, $sql2);
+
+                            if ($result2) {
+                                $row = mysqli_fetch_assoc($result2);
+                                $nextsong = $row['songID'];
+                                if ($nextsong == NULL) {
+                                    $sql3 = "SELECT * FROM `playlists` WHERE usersID = '$userID' ORDER BY addID LIMIT 1";
+                                    $result3 = mysqli_query($con, $sql3);
+                                    $row3 = mysqli_fetch_assoc($result3);
+                                    $nextsong = $row3['songID'];
+                                }
+
+                                echo '
+                                <a href="playlist.php?songid=' . $nextsong . '">
+                                    <div> <i class="fa-solid fa-forward"></i> </div>
+                                </a>';
                             }
                         }
+                    }
+                } else {
+                    $sql3 = "SELECT * FROM `playlists` WHERE usersID = '$userID' ORDER BY addID LIMIT 1";
+                    $result3 = mysqli_query($con, $sql3);
+                    $row3 = mysqli_fetch_assoc($result3);
+                    $nextsong = $row3['songID'];
+                    echo '
+                        <a href="playlist.php?songid=' . $nextsong . '">
+                            <div> <i class="fa-solid fa-forward"></i> </div>
+                        </a>';
+                }
+
+
+
+
+
+                /*if ($result){
+                        $nextid = $idno['addID'];
+                        $sql = "SELECT songID from PLAYLIST WHERE usersID = '$userID' AND addID > '$nextid' LIMIT 1";
+                        $result = mysqli_query($con, $sql);
+                        $row = $mysqli_fetch_assoc($result);
+                        $nextsong = $row['songID'];
                         echo'
-                        </nav>     
-                        <img src="uploads/' . $row['songImg'] . '"  class ="song-img">
-                        <h1>' . $name . '</h1>
-                        <p>' . $artist . '</p>
+                        <a href="playlist.php?songid=' . $nextsong . '">
+                            <div> <i class="fa-solid fa-forward"></i> </div>
+                        </a>';
+                }*/
+                ?>
+            </div>
+        </div>
 
+        <div class="musicplayer1">
+            <table class="table">
+                <h1> PLAYLIST </h1>
 
-                        <audio id ="song">
-                            <source src = "uploads/' . $row['songAudio'] . '" type = "audio/mpeg">
-                        </audio>
+                <?php
 
-                        <input type = "range" value = "0" id ="progress">
-
-                            <div class="controls">
-                                <a href="javascript:history.back()"> <div> <i class="fa-solid fa-backward"></i> </div> </a>
-                                <div onclick = "playPause()"> <i class="fa-solid fa-play" id = "ctrlIcon"></i> </div>';
-
-            // NEXT ON PLAYLIST
-            for ($x = 1; $x <= 10; $x++) {
-                $sql = "SELECT song$x from `playlists` WHERE usersID = '$userID'";
+                // FIND SONGS IN PLAYLIST
+                $sql = "SELECT songID FROM `playlists` WHERE usersID = '$userID' ORDER BY addID ";
                 $result = mysqli_query($con, $sql);
+
                 if ($result) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $song = $row['song' . $x . ''];
-                        if ($song != 0 && $song == $songID) {
-                            $y = $x + 1;
-                            if ($y < 11 && $y > 0) {
-                                $sql = "SELECT song$y from `playlists` WHERE usersID = '$userID'";
-                                $result = mysqli_query($con, $sql);
-                                $row = mysqli_fetch_assoc($result);
-                                $song1 = $row['song' . $x + 1 . ''];
 
-                                if ($song1 > 0) {
-                                    echo '<a href="playlist.php?songid=' . $song1 . '"> <div> <i class="fa-solid fa-forward"></i> </div></a>';
-                                    break 2;
-                                } else {
-                                    for ($z = 2; $z < 10; $z++) {
-                                        $j = $x + $z;
-                                        $sql = "SELECT song$j from `playlists` WHERE usersID = '$userID'";
-                                        $result = mysqli_query($con, $sql);
-                                        $row = mysqli_fetch_assoc($result);
-                                        $songz = $row['song' . $j . ''];
+                        $song = $row['songID'];
 
-                                        if ($songz > 0 && $j <= 10) {
-                                            echo '<a href="playlist.php?songid=' . $songz . '"> <div> <i class="fa-solid fa-forward"></i> </div></a>';
-                                            break 3;
-                                        }
-                                    }
-                                }
-                            }
-                        } 
-                    // IF SONG 10 LOOP BACK TO SONG1
-                }
-            }else {
-                            for ($x = 1; $x <= 10; $x++) {
-                                $sql = "SELECT song$x from `playlists` WHERE usersID = '$userID'";
-                                $result = mysqli_query($con, $sql);
-                                if ($result) {
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        $song = $row['song' . $x . ''];
-                                        if ($song != 0) {
-                                            $sql = "SELECT * from `songs` WHERE songID = $song";
-                                            $result = mysqli_query($con, $sql);
-                                            $row = mysqli_fetch_assoc($result);
+                        $sql2 = "SELECT * from `songs` WHERE songID = $song";
+                        $result2 = mysqli_query($con, $sql2);
+                        $row2 = mysqli_fetch_assoc($result2);
 
-                                            $songID = $row['songID'];
-                                            echo '<a href="playlist.php?songid=' . $songID . '"> <div> <i class="fa-solid fa-forward"></i> </div></a>';
-                                            break 2;
-                                        }
-                                    }
-                                }
-                            }
+                        $id = $row2['songID'];
+                        $name = $row2['songName'];
+                        $artist = $row2['songArtist'];
+                        $year = $row2['songYear'];
+                        $img = $row2['songImg'];
+                        $mp3 = $row2['songAudio'];
+
+                        if ($songID == $row2['songID']) {
+                            echo '<tr class = "darkgreen">';
+                        } else {
+                            echo '<tr>';
                         }
-                    }
-        
+                        echo '
+                        <td> <a href="playlist.php?songid=' . $id . '"><img src="../uploads/' . $img . '" > </a></td>
+                        <td> ' . $name . '</td>
+                        <td>' . $artist . '</td>
+                        <td>    
+                            <a class = "delete" href="../includes/AM_delete.inc.php?removeplaylistsong=' . $id . '&removeplaylistname=' . $userID . '"> <button class="Delete"> <i class="fa-solid fa-x"></i> </button> </a> 
+                        </td>
 
-?>
-</div>
-</div>
-
-<div class="musicplayer1">
-    <table class="table">
-        <h1> PLAYLIST </h1>
-
-        <?php
-        // GO THROUGH PLAYLIST AND DISPLAY ALL SONGS   
-        for ($x = 1; $x <= 10; $x++) {
-            $sql = "SELECT song$x from `playlists` WHERE usersID = '$userID'";
-            $result = mysqli_query($con, $sql);
-            if ($result) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $song = $row['song' . $x . ''];
-                    if ($song != 0) {
-                        $sql = "SELECT * from `songs` WHERE songID = $song";
-                        $result = mysqli_query($con, $sql);
-
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            $id = $row['songID'];
-                            $name = $row['songName'];
-                            $artist = $row['songArtist'];
-                            $year = $row['songYear'];
-                            $img = $row['songImg'];
-                            $mp3 = $row['songAudio'];
-
-
-                            if ($songID == $id) {
-                                echo '<tr class = "darkgreen">
-                                                <td> <a href="playlist.php?songid=' . $id . '"><img src="../uploads/' . $row['songImg'] . '" > </a></td>
-                                                <td> ' . $name . '</td>
-                                                <td>' . $artist . '</td>
-                                                <td>    
-                                                    <a class = "delete" href="../includes/AM_delete.inc.php?removeplaylistsong=' . $id . '&removeplaylistname=' . $userID . '"> <button class="Delete"> <i class="fa-solid fa-x"></i> </button> </a> 
-                                                </td>
-                                        </tr>';
-                            } else {
-                                echo '<tr>
-                                                <td> <a href="playlist.php?songid=' . $id . '"><img src="../uploads/' . $row['songImg'] . '" > </a></td>
-                                                <td> ' . $name . '</td>
-                                                <td>' . $artist . '</td>
-                                                <td>    
-                                                    <a class = "delete" href="../includes/AM_delete.inc.php?removeplaylistsong=' . $id . '&removeplaylistname=' . $userID . '"> <button class="Delete"> <i class="fa-solid fa-x"></i> </button> </a> 
-                                                </td>
-                                        </tr>';
-                            }
-                        }
+                        </tr>';
                     }
                 }
+
+                ?>
+            </table>
+        </div>
+    </div>
+    </div>
+
+    <!-- SCRIPT TO RUN MUSIC PLAYER -->
+    <script>
+        let progress = document.getElementById("progress");
+        let song = document.getElementById("song");
+        let icon = document.getElementById("ctrlIcon");
+
+        song.onloadeddata = function() {
+            progress.max = song.duration;
+            progress.value = song.currentTime;
+            song.pause();
+        }
+
+        // SCRIPT to change play icon to pause vice versa
+        function playPause() {
+            if (icon.classList.contains("fa-pause")) {
+                song.pause();
+                icon.classList.remove("fa-pause");
+                icon.classList.add("fa-play");
+            } else {
+                song.play();
+                icon.classList.add("fa-pause");
+                icon.classList.remove("fa-play");
             }
         }
+
+
+
+        if (song.play()) {
+            setInterval(() => {
+                progress.value = song.currentTime;
+            }, 500);
+
+
         }
-        ?>
-
-</div>
-
-<!-- SCRIPT TO RUN MUSIC PLAYER -->
-<script>
-    let progress = document.getElementById("progress");
-    let song = document.getElementById("song");
-    let icon = document.getElementById("ctrlIcon");
-
-    song.onloadeddata = function() {
-        progress.max = song.duration;
-        progress.value = song.currentTime;
-        song.pause();
-    }
-
-    // SCRIPT to change play icon to pause vice versa
-    function playPause() {
-        if (icon.classList.contains("fa-pause")) {
-            song.pause();
-            icon.classList.remove("fa-pause");
-            icon.classList.add("fa-play");
-        } else {
-            song.play();
-            icon.classList.add("fa-pause");
-            icon.classList.remove("fa-play");
-        }
-    }
-
-
-
-    if (song.play()) {
-        setInterval(() => {
-            progress.value = song.currentTime;
-        }, 500);
-
-
-    }
-</script>
-
-
-</body>
-
-</html>
-
+    </script>
 
 </body>
 

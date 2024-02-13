@@ -87,21 +87,10 @@
 
         </div>  
 
-        <div class="policies">
-            <ul>
-                <li>
-                    <a href="#"> Cookies </a>
-                </li>
-                <li>
-                    <a href="#"> Privacy </a>
-                </li>
-            </ul>
-        </div>
     </div>
 
     <div class="main-container">
         <div class="topbar">
-            <h5> ADMIN </h5>
             <div class="navbar">
 
                     <?php
@@ -109,7 +98,7 @@
                             echo "<h4>" . $_SESSION["usersName"] . "</h4>";
                             echo "<ul>";
                             echo "<li class='divider'>|</li>";
-                            echo "<li><a href='profile.php'>Profile</a></li>";  
+                            echo "<li><h4>Admin</h4></li>";  
                             echo "</ul>";
                             echo "<a href='../includes/logout.inc.php'><button type='button'>Log Out</button></a>";
                         }
