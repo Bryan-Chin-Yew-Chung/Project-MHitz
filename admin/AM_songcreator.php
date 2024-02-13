@@ -14,7 +14,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/admin.css">
-    <title> Create Song</title>
 </head>
 
 <body>
@@ -30,10 +29,11 @@
                 <input type="hidden" name="reqID" value=" <?php echo $reqid ?>">
                 <input type="text" name="name" placeholder="Song Name..." minlength="1" maxlength="80">
                 <input type="text" name="artist" placeholder="Artist Name..." minlength="1" maxlength="80">
-                <input type="number" min="1940" max="2024" name="date" placeholder="Year Released....">
+                <input type="number" min="1800" max="2024" name="date" placeholder="Year Released....">
 
                 <label> Upload Image [png , jpg , jpeg]  </label>
                     <input type="file" name="songimg"  accept=".png, .jpg , .jpeg">
+
                 <label> Upload Song [mp3]  </label>
                     <input type="file" name="songaudio"  accept=".mp3">
                 
@@ -45,6 +45,9 @@
                     }
                     if ($_GET["error"] == "filetoolarge") {
                         echo "<h1> File Too Large! </h1>";
+                    }
+                    if ($_GET["error"] == "notsquare") {
+                        echo "<h1> Image Must Be Square! </h1>";
                     }
                     if ($_GET["error"] == "badfile") {
                         echo "<h1> Not an accepted file type! </h1>";

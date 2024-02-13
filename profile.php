@@ -44,13 +44,7 @@ $userID = $_SESSION['usersName'];
                 </div>
             </div>';
  ?>
-            <div class="infocontainer">
 
-
-
-
-
-            </div>
 
         </div>
     </div>

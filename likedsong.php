@@ -3,7 +3,11 @@ include_once 'userUI.php';
 include_once 'includes/dbh.inc.php';
 include_once 'includes/func.inc.php';
 
+if (!isset ($_SESSION['usersName'])){
+    header("location: login.php");
+}
 $userID = $_SESSION['usersName'];
+
 ?>
 
 <!DOCTYPE html>
