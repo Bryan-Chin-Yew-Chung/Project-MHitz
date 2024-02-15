@@ -194,7 +194,7 @@ if (!isset($userID)) {
                             echo '<tr>';
                         }
                         echo '
-                        <td> <a href="playlist.php?songid=' . $id . '"><img src="../uploads/' . $img . '" > </a></td>
+                        <td> <a href="playlist.php?songid=' . $id . '"><img src="uploads/' . $img . '" > </a></td>
                         <td> ' . $name . '</td>
                         <td>' . $artist . '</td>
                         <td>    

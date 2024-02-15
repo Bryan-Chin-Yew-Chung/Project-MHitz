@@ -6,8 +6,6 @@ $userID = $_SESSION['usersName'];
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-} else {
-    header("location: index.php");
 }
 ?>
 
@@ -35,32 +33,50 @@ if (isset($_GET['id'])) {
     $email = $row['usersEmail'];
     $date = $row['userjoinDate'];
 
-    echo'
+    echo '
     <div class="profilecontainer">
         <div class="storage">
             <div class="infocontainer">
                 <div class="info">
                     <h3> UPDATE INFORMATION </h3>
                 <form action="includes/profileupdate.inc.php" method="post">
-                    <input type="hidden" name="id" value="'. $id .'">
-                    <input type ="text" name="name" value="'. $name .'">
-                    <input type ="text" name="email" value="'. $email .'">
+                    <input type="hidden" name="id" value="' . $id . '">
+                    <input type="hidden" name="oldname" value="' . $userID . '">
+                    <input type ="text" name="name" value="' . $name . '">
+                    <input type ="text" name="email" value="' . $email . '">
                     <input type ="password" name="pwd" placeholder="Leave Empty To Keep Old Password...">
                  
 
                     <button type="submit" name = "submit"><i class="fa-solid fa-pen"> Update </i></button>
-                </form>      
+                </form>  
 
+                ';
+    if (isset($_GET["error"])) {
+        if ($_GET["error"] == "emptyinput") {
+            echo "<h1> Require input is missing! </h1>";
+        }
+
+        if ($_GET["error"] == "invalidusername") {
+            echo "<h2> Invalid Email </h2>";
+        }
+        if ($_GET["error"] == "invalidemail") {
+            echo "<h2> Invalid Email </h2>";
+        }
+        if ($_GET["error"] == "username/emailtaken") {
+            echo "<h2> Username/Email Taken! </h2>";
+        }
+    }
+    echo '
                 </div>
             </div>
 
             </div>';
-            ?>
-';
- ?>
+    ?>
+    ';
+    ?>
 
 
-        </div>
+    </div>
     </div>
 
 

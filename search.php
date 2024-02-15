@@ -45,7 +45,7 @@
                                 echo '
                                     <a href="displaysong.php?songid=' . $id . '">
                                         <div class="item" >
-                                            <img src="../uploads/' . $row['songImg'] . '"/>
+                                            <img src="uploads/' . $row['songImg'] . '"/>
                                                 <div class = "play">
                                                     <span class = "fa fa-play"> </span>
                                                 </div>

@@ -43,7 +43,7 @@
                                 echo '
                                     <a href="displaysong.php?songid=' . $id . '">
                                         <div class="item" >
-                                            <img src="../uploads/' . $row['songImg'] . '"/>
+                                            <img src="uploads/' . $img . '"/>
                                                 <div class = "play">
                                                     <span class = "fa fa-play"> </span>
                                                 </div>
@@ -94,7 +94,7 @@
                 echo '
                     <a href="displaysong.php?songid=' . $id . '">
                         <div class="item" >
-                            <img src="../uploads/' . $img . '"/>
+                            <img src="uploads/' . $img . '"/>
                                 <div class = "play">
                                     <span class = "fa fa-play"> </span>
                                 </div>

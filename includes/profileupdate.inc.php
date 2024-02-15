@@ -9,6 +9,7 @@
         $name = $_POST["name"];
         $email = $_POST["email"];
         $pwd = $_POST["pwd"];
+        $oldname = $_POST["oldname"];
 
         // Check if input if empty
         if (signupEmptyInput($id , $name , $email , $name) !== false) {
@@ -36,10 +37,10 @@
         }
 
         if($pwd == ""){
-            userUpdatenoPassword($con,$id,$name,$email);
+            userUpdatenoPassword($con,$id,$name,$email, $oldname);
         }
         else{
-            userUpdatePassword($con,$id,$name,$email,$pwd);
+            userUpdatePassword($con,$id,$name,$email,$pwd , $oldname);
         }
 
 
