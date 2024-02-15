@@ -10,11 +10,25 @@
             exit();
         }
 
-        $sql = "DELETE from `users` WHERE usersID = '$id'";
-        $result=mysqli_query($con,$sql);
+        $sql = "SELECT usersName from `users` WHERE usersID = '$id'";
+        $result = mysqli_query($con,$sql);
+
+        $row = mysqli_fetch_assoc($result);
+        $userName = $row['usersName'];
+
+        $sql2 = "DELETE from `playlists` WHERE usersID = '$userName'";
+        $result=mysqli_query($con,$sql2);
+
+        $sql3 = "DELETE from `likes` WHERE userID = '$userName'";
+        $result=mysqli_query($con,$sql3);
+    
+
+        $sql4 = "DELETE from `users` WHERE usersID = '$id'";
+        $result4 = mysqli_query($con,$sql4);
 
 
-        if($result){
+
+        if($result4){
             header("location: ../admin/AM_accountcontrol.php?error=deletesuccess");
         }
         else{
