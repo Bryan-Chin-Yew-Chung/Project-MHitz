@@ -31,7 +31,8 @@
                 <input type="text" name="artist" placeholder="Artist Name..." minlength="1" maxlength="80">
                 <input type="number" min="1800" max="2024" name="date" placeholder="Year Released....">
 
-                <label> Upload Image [png , jpg , jpeg]  </label>
+                <label> Upload Image [png , jpg , jpeg] </label>
+                <label> [MUST BE SQUARE] </label>
                     <input type="file" name="songimg"  accept=".png, .jpg , .jpeg">
 
                 <label> Upload Song [mp3]  </label>

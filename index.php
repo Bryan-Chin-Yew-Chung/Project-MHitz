@@ -62,6 +62,52 @@
             </div>
     </div>
 
+    <div class="indexdisplay">
+        <h1> Top Liked </h1>
+        <div class="list">
+            <?php
+            //GET ACCOUNTS
+
+            $sql = "SELECT songID , Count(songID) as TotalRepetitions 
+                    FROM likes
+                    GROUP BY songID
+                    ORDER BY TotalRepetitions DESC 
+                    LIMIT 5";
+            $result = mysqli_query($con, $sql);
+            while ($row =  mysqli_fetch_assoc($result)) {
+                
+                $songID = $row['songID'];
+
+                $sql2 = "SELECT * FROM songs WHERE songID = $songID";
+                $result2 = mysqli_query($con, $sql2);
+                $row2 = mysqli_fetch_assoc($result2);
+                $id = $row2['songID'];
+                $name = $row2['songName'];
+                $artist = $row2['songArtist'];
+                $year = $row2['songYear'];
+                $img = $row2['songImg'];
+                $play = $row2['songPlays'];
+
+                $sql3 = "SELECT * FROM likes WHERE songID = $songID";
+                $result3 = mysqli_query($con, $sql3);
+                $queryResult = mysqli_num_rows($result3);
+                echo '
+                    <a href="displaysong.php?songid=' . $id . '">
+                        <div class="item" >
+                            <img src="../uploads/' . $img . '"/>
+                                <div class = "play">
+                                    <span class = "fa fa-play"> </span>
+                                </div>
+                            <h4>' . $name . '</h4>
+                            <p>' . $artist . '</p>
+                            <p>' . $year . '</p>
+                            <br>
+                            <h4> Like Count : ' . $queryResult . '</h4>
+                        </div> 
+                    </a>';
+            }
+
+            ?>
 
 </body>
 </html>

@@ -2,70 +2,13 @@
     include_once "dbh.inc.php";
 
 
-    
-    if(isset($_GET['deleteplaylistdisplayn']) && isset($_GET['deleteplaylistdisplays'])){
-        $songdel = $_GET['deleteplaylistdisplays'];
-        $name = $_GET['deleteplaylistdisplayn'];
-
-
-            // FOR LOOP TO CHECK FOR DELETION
-            for ($x = 1; $x <= 10; $x++) {
-                $sql = "SELECT song$x from `playlists` WHERE usersID = '$name'";
-                $result = mysqli_query($con,$sql);
-                $row = mysqli_fetch_assoc($result);
-                
-                $song = $row['song' . $x .''];
-
-
-                if ($song == $songdel){
-                    $sql = "UPDATE `playlists` SET song$x = 0
-                    WHERE usersID = '$name'";
-
-                    $result = mysqli_query($con, $sql);
-
-                    if($result){
-                        header("location: ../displaysong.php??songid=" . $songdel ."");
-                        exit();
-                    }           
-                }
-        }
-
-
-    }
-
-    if(isset($_GET['removeplaylistsong']) && isset($_GET['removeplaylistname'])){
-        $songdel = $_GET['removeplaylistsong'];
-        $name = $_GET['removeplaylistname'];
-
-
-            // FOR LOOP TO CHECK FOR DELETION
-            for ($x = 1; $x <= 10; $x++) {
-                $sql = "SELECT song$x from `playlists` WHERE usersID = '$name'";
-                $result = mysqli_query($con,$sql);
-                $row = mysqli_fetch_assoc($result);
-                
-                $song = $row['song' . $x .''];
-
-
-                if ($song == $songdel){
-                    $sql = "UPDATE `playlists` SET song$x = 0
-                    WHERE usersID = '$name'";
-
-                    $result = mysqli_query($con, $sql);
-
-                    if($result){
-                        header("location: ../playlist.php?error=none");
-                        exit();
-                    }           
-                }
-        }
-
-
-    }
-
-
     if(isset($_GET['deleteid'])){
         $id = $_GET['deleteid'];
+
+        if ($id == 1){
+            header("location: ../admin/AM_accountcontrol.php?error=nicetry");
+            exit();
+        }
 
         $sql = "DELETE from `users` WHERE usersID = '$id'";
         $result=mysqli_query($con,$sql);

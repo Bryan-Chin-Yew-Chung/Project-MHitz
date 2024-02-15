@@ -113,7 +113,7 @@
 
                         <td>    
                              <a href="AM_accountupdate.php?updateid='.$id.'"> <button class="Edit"> Update </button>  </a> 
-                             <a class = "delete" href="../includes/AM_delete.inc.php?deleteid='.$id.'&deleteplaylist='.$name.'"> <button class="Delete"> Delete </button> </a> 
+                             <a class = "delete" href="../includes/AM_delete.inc.php?deleteid='.$id.'"> <button class="Delete"> Delete </button> </a> 
                         </td>
                         </tr>';
 

@@ -59,7 +59,7 @@ include_once '../includes/func.inc.php';
                     <th scope="col"> Year </th>
                     <th scope="col"> Listen </th>
                     <th scope="col"> Likes </th>
-                    <th scope="col"> Comments </th>
+                    <th scope="col"> Plays</th>
                     <th scope="col"> Operations </th>
                 </thread>
 
@@ -86,20 +86,32 @@ include_once '../includes/func.inc.php';
                                 $artist = $row['songArtist'];
                                 $year = $row['songYear'];
                                 $img = $row['songImg'];
+                                $play = $row['songPlays'];
+                                $mp3 = $row['songAudio'];
 
                                 echo '<tr>
-                                    <td> <img src="../uploads/' . $row['songImg'] . '" ></td>
-                                    <td>' . $name . '</td>
-                                    <td>' . $artist . '</td>
-                                    <td>' . $year . '</td>
-                                    <td> <i class="fa-solid fa-play"></i> </td>
-                                    <td> 5 </td>
-                                    <td> 10 </td>
-                                <td>    
-                                    <a href=""> <button class="Edit"> Update </button>  </a> 
-                                    <a class = "delete" href="../includes/AM_delete.inc.php?deletesong=' . $id . '"> <button class="Delete"> Delete </button> </a> 
-                                </td>
-                                </tr>';
+                            <td> <img src="../uploads/' . $img . '" ></td>
+                            <td>' . $name . '</td>
+                            <td>' . $artist . '</td>
+                            <td>' . $year . '</td>
+                            <td> <audio controls>
+                                <source src="../uploads/' . $mp3 . '">
+                                </audio>
+                            </td>';
+
+                                $sql2 = "SELECT * from `likes` WHERE songID = $id";
+                                $result2 = mysqli_query($con, $sql2);
+                                $queryResult = mysqli_num_rows($result2);
+
+                                echo '
+                            <td>' . $queryResult . '</td>
+
+
+                            <td>' . $play . '</td>
+                        <td>    
+                             <a class = "delete" href="../includes/AM_delete.inc.php?deletesong=' . $id . '"> <button class="Delete"> Delete </button> </a> 
+                        </td>
+                        </tr>';
                             }
                         } else {
                             echo  '<h2>No items matched your search</h2>';
@@ -108,6 +120,7 @@ include_once '../includes/func.inc.php';
                         exit();
                     }
                 }
+
                 if (isset($_GET['search'])) {
                     if (!empty($_GET['search'])) {
 
@@ -128,19 +141,33 @@ include_once '../includes/func.inc.php';
                                 $artist = $row['songArtist'];
                                 $year = $row['songYear'];
                                 $img = $row['songImg'];
+                                $play = $row['songPlays'];
+                                $mp3 = $row['songAudio'];
+
 
                                 echo '<tr>
-                                    <td> <img src="../uploads/' . $row['songImg'] . '" ></td>
-                                    <td>' . $name . '</td>
-                                    <td>' . $artist . '</td>
-                                    <td>' . $year . '</td>
-                                    <td> <i class="fa-solid fa-play"></i> </td>
-                                    <td> 5 </td>
-                                    <td> 10 </td>
-                                <td>    
-                                    <a class = "delete" href="../includes/AM_delete.inc.php?deletesong=' . $id . '"> <button class="Delete"> Delete </button> </a> 
-                                </td>
-                                </tr>';
+                            <td> <img src="../uploads/' . $img . '" ></td>
+                            <td>' . $name . '</td>
+                            <td>' . $artist . '</td>
+                            <td>' . $year . '</td>
+                            <td> <audio controls>
+                                <source src="../uploads/' . $mp3 . '">
+                                </audio>
+                            </td>';
+
+                                $sql2 = "SELECT * from `likes` WHERE songID = $id";
+                                $result2 = mysqli_query($con, $sql2);
+                                $queryResult2 = mysqli_num_rows($result2);
+
+                                echo '
+                            <td>' . $queryResult2 . '</td>
+
+
+                            <td>' . $play . '</td>
+                        <td>    
+                             <a class = "delete" href="../includes/AM_delete.inc.php?deletesong=' . $id . '"> <button class="Delete"> Delete </button> </a> 
+                        </td>
+                        </tr>';
                             }
                         } else {
                             echo  '<h2>No items matched your search</h2>';

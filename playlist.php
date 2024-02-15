@@ -158,20 +158,6 @@ if (!isset($userID)) {
                 }
 
 
-
-
-
-                /*if ($result){
-                        $nextid = $idno['addID'];
-                        $sql = "SELECT songID from PLAYLIST WHERE usersID = '$userID' AND addID > '$nextid' LIMIT 1";
-                        $result = mysqli_query($con, $sql);
-                        $row = $mysqli_fetch_assoc($result);
-                        $nextsong = $row['songID'];
-                        echo'
-                        <a href="playlist.php?songid=' . $nextsong . '">
-                            <div> <i class="fa-solid fa-forward"></i> </div>
-                        </a>';
-                }*/
                 ?>
             </div>
         </div>
@@ -212,7 +198,7 @@ if (!isset($userID)) {
                         <td> ' . $name . '</td>
                         <td>' . $artist . '</td>
                         <td>    
-                            <a class = "delete" href="../includes/AM_delete.inc.php?removeplaylistsong=' . $id . '&removeplaylistname=' . $userID . '"> <button class="Delete"> <i class="fa-solid fa-x"></i> </button> </a> 
+                            <a class = "delete" href="includes/playlist.inc.php?removeplaylistsong=' . $id . '&removeplaylistname=' . $userID . '"> <button class="Delete"> <i class="fa-solid fa-x"></i> </button> </a> 
                         </td>
 
                         </tr>';

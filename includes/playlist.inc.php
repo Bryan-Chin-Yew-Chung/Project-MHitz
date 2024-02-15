@@ -63,3 +63,14 @@
         header("location: ../playlist.php?songid=0");
     }
 
+    if(isset($_GET['removeplaylistsong']) && isset($_GET['removeplaylistname'])){
+        $userID = $_GET['removeplaylistname'];
+        $songID = $_GET['removeplaylistsong'];
+
+        $sql = "DELETE from `playlists` WHERE usersID = '$userID' AND songID = '$songID'";
+        $result=mysqli_query($con,$sql);
+
+        header("location: ../playlist.php?songid=0");
+    }
+
+

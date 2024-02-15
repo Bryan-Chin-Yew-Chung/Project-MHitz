@@ -18,7 +18,7 @@
 <body>
         <div class = "search">
             <form class="searcharea" action = "searchresult.php" method = "POST">
-                <input type = "text" name="searchbox" placeholder="Enter Song Name / Artist / Year.... ">
+                <input type = "text" name="searchbox" placeholder="Enter Song Name / Artist">
                 <button type = "submit" name="submitsearch"><i class="fa-solid fa-magnifying-glass fa-2x"></i></button>
             </form>            
         </div>
