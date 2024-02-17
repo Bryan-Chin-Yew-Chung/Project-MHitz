@@ -195,8 +195,8 @@ if (!isset($userID)) {
                         }
                         echo '
                         <td> <a href="playlist.php?songid=' . $id . '"><img src="uploads/' . $img . '" > </a></td>
-                        <td> ' . $name . '</td>
-                        <td>' . $artist . '</td>
+                        <td> <a href="playlist.php?songid=' . $id . '">' . $name . '</a></td>
+                        <td><a href="playlist.php?songid=' . $id . '">' . $artist . '</a></td>
                         <td>    
                             <a class = "delete" href="includes/playlist.inc.php?removeplaylistsong=' . $id . '&removeplaylistname=' . $userID . '"> <button class="Delete"> <i class="fa-solid fa-x"></i> </button> </a> 
                         </td>

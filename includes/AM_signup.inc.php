@@ -1,5 +1,5 @@
 <?php
-
+    include_once "../admin/adminUI.php";
     // Check if reached page legitimatly
     if(isset($_POST["submit"])){
         // Error handling files

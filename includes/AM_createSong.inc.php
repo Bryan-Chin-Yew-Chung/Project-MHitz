@@ -1,5 +1,5 @@
 <?php
-
+include_once "../admin/adminUI.php";
 require_once 'dbh.inc.php';
 require_once 'func.inc.php';
 

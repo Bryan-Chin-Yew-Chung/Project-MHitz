@@ -1,4 +1,5 @@
 <?php 
+    include_once "../admin/adminUI.php";
     include_once "dbh.inc.php";
 
 
@@ -16,12 +17,15 @@
         $row = mysqli_fetch_assoc($result);
         $userName = $row['usersName'];
 
-        $sql2 = "DELETE from `playlists` WHERE usersID = '$userName'";
-        $result=mysqli_query($con,$sql2);
+        $sql = "DELETE from `playlists` WHERE usersID = '$userName'";
+        mysqli_query($con,$sql);
 
-        $sql3 = "DELETE from `likes` WHERE userID = '$userName'";
-        $result=mysqli_query($con,$sql3);
-    
+        $sql2 = "DELETE from `likes` WHERE userID = '$userName'";
+        mysqli_query($con,$sql2);
+ 
+        $sql3 = "DELETE from `requests` WHERE usersName = '$userName'";
+        mysqli_query($con,$sql3);
+
 
         $sql4 = "DELETE from `users` WHERE usersID = '$id'";
         $result4 = mysqli_query($con,$sql4);
@@ -42,7 +46,8 @@
     else if(isset($_GET['deletereq'])){
         $id = $_GET['deletereq'];
 
-        $sql = "DELETE from `requests` WHERE songID = $id";
+        $sql = "UPDATE `requests` SET reqState = 2
+        WHERE songID = $id";
         $result=mysqli_query($con,$sql);
 
         if($result){
@@ -53,20 +58,6 @@
         }
     }
 
-    else if(isset($_GET['cdeletereq'])){
-        $id = $_GET['cdeletereq'];
-
-        $sql = "DELETE from `requests` WHERE songID = $id";
-        $result = mysqli_query($con,$sql);
-
-        if($result){
-
-            header("location: ../admin/AM_requestcontrol.php?error=crequestadded");
-        }
-        else{
-            die(mysqli_error($con));
-        }
-    }
 
     //$sql = "SELECT usersType FROM users WHERE usersName = '$name';";
     //$result = mysqli_query($con , $sql);

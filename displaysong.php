@@ -52,7 +52,7 @@ $userID = $_SESSION['usersName'];
 
             echo '<div class="musicplayer">
                         <nav>
-                            <a href = "search.php"><div class="circle">
+                            <a href = "javascript:history.back()"><div class="circle">
                                 <i class="fa-solid fa-angle-left"> </i> 
                             </div></a>';
             if (isset($_SESSION['usersName'])) {

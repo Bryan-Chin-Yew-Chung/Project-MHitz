@@ -65,7 +65,8 @@ include_once '../includes/func.inc.php';
 
                 <!--Get data from database-->
                 <?php
-                $sql = "SELECT * from `requests`";
+                // DISPLAY ALL UNSTATED REQUESTS ( 0 = Unstated , 1 = Accepted , 2 = Rejected)
+                $sql = "SELECT * from `requests` WHERE reqState = 0";
                 $result = mysqli_query($con, $sql);
 
 

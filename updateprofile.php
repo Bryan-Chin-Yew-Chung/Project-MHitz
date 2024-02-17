@@ -49,6 +49,8 @@ if (isset($_GET['id'])) {
 
                     <button type="submit" name = "submit"><i class="fa-solid fa-pen"> Update </i></button>
                 </form>  
+                <br>
+                <br>
 
                 ';
     if (isset($_GET["error"])) {

@@ -280,11 +280,19 @@ function createSong($con, $songName, $songArtist, $songYear, $songImg, $songAudi
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
-    if (!isset($reqID)) {
-        // Fix some weird "Header may not contain more than a single header" error
-        $url = "../includes/AM_delete.inc.php?cdeletereq=" . $reqID . "";
-        $url = str_replace(PHP_EOL, '', $url);
-        header("location: $url");
+    if (isset($reqID)) {
+
+        $sql = "UPDATE `requests` SET reqState = 1
+        WHERE songID = $reqID";
+        $result = mysqli_query($con,$sql);
+
+        if($result){
+            header("location: ../admin/AM_requestcontrol.php?error=crequestadded");
+        }
+        else{
+            die(mysqli_error($con));
+        }
+
         exit();
     } else {
 

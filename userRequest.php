@@ -39,7 +39,7 @@
                             echo "<h1> Required input is missing! </h1>";
                         }
                         if($_GET["error"] == "none"){
-                            echo "<h3> Request Sent! Wait for an admin to approve/deny your request</h3>";
+                            echo "<h3> Request Sent! Wait for an admin to approve/deny your request. You can check your requests on your profile page</h3>";
                         }
                     }
                 ?>
