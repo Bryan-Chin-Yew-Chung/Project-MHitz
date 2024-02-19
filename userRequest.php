@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class = "userSongRequest">
-        <h1> Cant find your favorite Malaysian Song ? Request it here <span class="fa fas fa-arrow-down"></span> </h1>
+        <h1> Can't find your favorite Malaysian Song ? Request it here <span class="fa fas fa-arrow-down"></span> </h1>
 
         <!-- Request Form-->
             <div class="request-form">

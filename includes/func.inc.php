@@ -280,7 +280,8 @@ function createSong($con, $songName, $songArtist, $songYear, $songImg, $songAudi
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
-    if (isset($reqID)) {
+
+    if ($reqID > 0) {
 
         $sql = "UPDATE `requests` SET reqState = 1
         WHERE songID = $reqID";
@@ -356,13 +357,19 @@ function userUpdatenoPassword($con, $id, $name, $email , $oldname)
 {
         $sql = "UPDATE `playlists` SET usersID = '$name'
         WHERE usersID = '$oldname'";
+        mysqli_query($con, $sql);
 
         $sql2 = "UPDATE `likes` SET userID = '$name'
         WHERE userID = '$oldname'";
-
-
-        mysqli_query($con, $sql);
         mysqli_query($con, $sql2);
+
+        
+        $sql3 = "UPDATE `requests` SET usersName = '$name'
+        WHERE usersName = '$oldname'";
+        mysqli_query($con, $sql3);
+
+        
+        
 
     $sql = "UPDATE `users` SET usersID = $id, usersName = '$name',
         usersEmail = '$email' 
@@ -377,9 +384,16 @@ function userUpdatePassword($con, $id, $name, $email, $pwd , $oldname)
 {
         $sql = "UPDATE `playlists` SET usersID = '$name'
         WHERE usersID = '$oldname'";
+        mysqli_query($con, $sql);
 
         $sql2 = "UPDATE `likes` SET userID = '$name'
         WHERE userID = '$oldname'";
+        mysqli_query($con, $sql2);
+
+        
+        $sql3 = "UPDATE `requests` SET usersName = '$name'
+        WHERE usersName = '$oldname'";
+        mysqli_query($con, $sql3);
 
 
         mysqli_query($con, $sql);

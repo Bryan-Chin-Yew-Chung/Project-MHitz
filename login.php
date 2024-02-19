@@ -30,7 +30,7 @@
                             echo "<h1> Require input is missing! </h1>";
                         }
                         if($_GET["error"] == "incorrectlogin"){
-                            echo "<h1> Username/Email or passwords dont match! </h1>";
+                            echo "<h1> Username/Email or passwords don't match! </h1>";
                         }
                     }
 

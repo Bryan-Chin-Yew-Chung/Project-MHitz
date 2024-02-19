@@ -71,7 +71,7 @@ $userID = $_SESSION['usersName'];
             
 
             </div>
-                    <div class="infocontainer">
+                    <div class="infocontainer2">
                     <div class="info">
                     <h4> Requests  </h4>';
 

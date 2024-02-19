@@ -399,6 +399,7 @@ table.table{
     display: block;
     height: 500px;
     overflow-y: scroll;
+    overflow-x:hidden;
     width: 100%;
     text-align: left;
     table-layout: auto;
@@ -525,7 +526,7 @@ a {
 }
 
 .profilecontainer .storage{
-    width: 75%;
+    width: 100%;
     padding: 30px;
     height: 420px;
     background-color: #181818;
@@ -672,5 +673,65 @@ table.profiletable{
     table-layout: auto;
 }
 
+.profilecontainer .storage .infocontainer2{
+    padding: 30px;
+    width: 500px;
+    background-color: #333131;
+    margin-right : 30px;
+    overflow-y: scroll;
+    overflow-x: ellipsis;
+}
 
+
+.profilecontainer .storage .infocontainer2 h1{
+    color: white;
+    font-size: 20px;
+    padding-bottom: 18px;
+
+}
+
+.profilecontainer .storage .infocontainer2 h2{
+    color: rgb(119, 30, 30);
+    font-size: 25px;
+    padding-bottom: 18px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 2px 2px #000000;
+}
+
+.profilecontainer .storage .infocontainer2 h3{
+    color: rgb(36, 125, 37);
+    font-size: 25px;
+    padding-bottom: 18px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 2px 2px #000000;
+}
+
+.profilecontainer .storage .infocontainer2 button{
+    border: 1px solid black;
+    border-radius: 1.5px;
+    height: 36px;
+    color: black;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.profilecontainer .storage .infocontainer2 button.Deleteuser{
+    border: 1px solid black;
+    border-radius: 1.5px;
+    height: 36px;
+    color: black;
+    cursor: pointer;
+    padding: 10px;
+    background-color: lightcoral;
+}
+
+.infocontainer2 h4{
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 16px;
+}
 

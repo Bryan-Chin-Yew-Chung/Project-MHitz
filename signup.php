@@ -31,7 +31,7 @@
                             echo "<h1> Invalid Email! </h1>";
                         }
                         if($_GET["error"] == "passwordmismatch"){
-                            echo "<h1> Passwords dont match! </h1>";
+                            echo "<h1> Passwords don't match! </h1>";
                         }
                         if($_GET["error"] == "username/emailtaken"){
                             echo "<h1> Username or Email Taken! </h1>";
